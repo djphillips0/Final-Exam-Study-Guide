@@ -1,0 +1,2936 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MBB Final Exam Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Domine:wght@500;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: sticky contents sidebar on wide screens, reading column of ~70ch; stacks on phones. Tokens match the question bank. */
+:root {
+  --bg: #EEF1F5;
+  --card: #FBFCFD;
+  --ink: #1D2840;
+  --body: #34405A;
+  --muted: #5C677D;
+  --line: #D5DBE4;
+  --accent: #9A4E12;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #F6E7D8;
+  --zone: #F3F5F8;
+  --good: #23643F;
+  --good-soft: #DDEFE4;
+  --bad: #A2342A;
+  --bad-soft: #F8E1DE;
+  --focus: #2F5DA8;
+  --display: 'Domine', Georgia, serif;
+  --text: 'Nunito Sans', 'Segoe UI', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121826; --card: #1B2333; --ink: #ECEEF2; --body: #C9CFDA; --muted: #9AA4B6; --line: #2D3749;
+    --accent: #EBA25C; --accent-ink: #1B1306; --accent-soft: #3A2817; --zone: #151C2A;
+    --good: #7FCB9D; --good-soft: #17352A; --bad: #F2948A; --bad-soft: #3D1F1C; --focus: #8FB3F0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121826; --card: #1B2333; --ink: #ECEEF2; --body: #C9CFDA; --muted: #9AA4B6; --line: #2D3749;
+  --accent: #EBA25C; --accent-ink: #1B1306; --accent-soft: #3A2817; --zone: #151C2A;
+  --good: #7FCB9D; --good-soft: #17352A; --bad: #F2948A; --bad-soft: #3D1F1C; --focus: #8FB3F0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+:root { padding-top: env(safe-area-inset-top,0px); padding-bottom: env(safe-area-inset-bottom,0px); }
+html { scroll-padding-top: 16px; }
+body { margin: 0; background: var(--bg); color: var(--body); font-family: var(--text); font-size: 16px; line-height: 1.6; }
+[hidden] { display: none !important; }
+a { color: var(--focus); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+button { font: inherit; cursor: pointer; }
+.eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 700; color: var(--ink); font-size: clamp(26px, 3.2vw, 36px); line-height: 1.15; margin: 4px 0 0; text-wrap: balance; }
+.sub { color: var(--muted); }
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 8px; padding: 8px 14px; font-weight: 700; font-size: 14px; text-decoration: none; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; min-width: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 20px; }
+header { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; }
+.layout { display: grid; grid-template-columns: 250px minmax(0,1fr); gap: 24px; align-items: start; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0,1fr); } nav.toc { position: static !important; max-height: none !important; } }
+nav.toc { position: sticky; top: calc(16px + env(safe-area-inset-top,0px)); max-height: calc(100vh - 32px); overflow: auto; }
+nav.toc h2 { font-family: var(--display); font-size: 16px; color: var(--ink); margin: 0 0 8px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+nav.toc a { display: block; padding: 5px 8px; border-radius: 6px; color: var(--body); text-decoration: none; font-size: 14px; line-height: 1.35; }
+nav.toc a:hover { background: var(--zone); color: var(--ink); }
+article { padding: 28px clamp(18px, 4vw, 44px); }
+article > * { max-width: 76ch; }
+article .tw { max-width: 100%; overflow-x: auto; margin: 12px 0 18px; border: 1px solid var(--line); border-radius: 10px; }
+article table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.45; }
+article th, article td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+article th { background: var(--zone); color: var(--ink); font-weight: 800; }
+article tr:last-child td { border-bottom: none; }
+article h2 { font-family: var(--display); color: var(--ink); font-size: 24px; line-height: 1.25; margin: 40px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); text-wrap: balance; }
+article h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+article h3 { font-family: var(--display); color: var(--ink); font-size: 18px; margin: 26px 0 8px; }
+article h3.hy { font-family: var(--text); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-top: 30px; padding-top: 14px; border-top: 2px solid var(--accent-soft); }
+article h3.hy + p, article h3.hy ~ ul { }
+article blockquote { margin: 16px 0; padding: 12px 16px; background: var(--zone); border-left: 4px solid var(--accent); border-radius: 8px; color: var(--ink); }
+article blockquote p { margin: 0; }
+article ul, article ol { padding-left: 1.3em; }
+article li { margin: 4px 0; }
+article strong { color: var(--ink); }
+.top { position: fixed; right: max(16px, env(safe-area-inset-right,0px)); bottom: calc(16px + env(safe-area-inset-bottom,0px)); }
+.gate { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-block: 32px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.gate .panel { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 14px; }
+.gate h1 { font-size: 26px; }
+.gate label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.gate input { font: inherit; font-size: 16px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
+.gate input:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+.gate .err { color: var(--bad); font-size: 14px; font-weight: 700; margin: 0; }
+
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="panel">
+    <div class="eyebrow">MBB 2026 · Final exam review</div>
+    <h1>MBB Final Exam Study Guide</h1>
+    <p class="sub" style="margin:0">Sign in with the username and password from your course announcement.</p>
+    <label for="gUser">Username<input id="gUser" type="text" autocomplete="username" autocapitalize="off" spellcheck="false"></label>
+    <label for="gPass">Password<input id="gPass" type="password" autocomplete="current-password"></label>
+    <p class="err" id="gErr" hidden>That username or password is not right. Check them and try again.</p>
+    <button class="btn primary" id="gBtn" type="button" style="justify-content:center">Sign in</button>
+  </div>
+</div>
+<div id="app" hidden>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">MBB 2026 · Final exam review</div>
+      <h1>MBB Final Exam Study Guide</h1>
+      <p class="sub" style="margin:6px 0 0">Updated Nov 5, 2026, with the review-session material. Every example in this guide is a new scenario, not an exam item.</p>
+    </div>
+    <a class="btn primary" href="index.html">← Back to the question bank</a>
+  </header>
+  <div class="layout">
+    <nav class="toc panel" aria-label="Contents"><h2>Contents</h2><ol>
+<li><a href="#exam-at-a-glance">Exam at a glance</a></li>
+<li><a href="#s1">1. Psychiatric diagnosis and mental status (9 questions)</a></li>
+<li><a href="#s2">2. Psychiatric management, suicide and psychopharmacology (10–11 questions)</a></li>
+<li><a href="#s3">3. Spinal cord, nerve, muscle and demyelination (11 questions)</a></li>
+<li><a href="#s4">4. Brainstem, cranial nerves and eye movements (6 questions)</a></li>
+<li><a href="#s5">5. Stroke, vascular territories and hemorrhage (7 questions)</a></li>
+<li><a href="#s6">6. Cortex, limbic system, hypothalamus and sleep (6 questions)</a></li>
+<li><a href="#s7">7. Movement disorders, cerebellum and dementia (6 questions)</a></li>
+<li><a href="#s8">8. Seizures and headache (5 questions)</a></li>
+<li><a href="#s9">9. Ventricles, development, imaging and tumors on imaging (5 questions)</a></li>
+<li><a href="#s10">10. Neuropathology (6 questions)</a></li>
+<li><a href="#s11">11. Neuropharmacology (8 questions)</a></li>
+<li><a href="#five-question-formats">Five question formats</a></li>
+<li><a href="#integrated-study-approach">Integrated study approach</a></li>
+<li><a href="#layered-probing-questions">Layered probing questions</a></li>
+    </ol></nav>
+    <article class="panel">
+<p>The final has about 80 questions: about 20 on new psychiatry material and about 60 cumulative questions drawn from the whole block. Nearly 9 in 10 are clinical vignettes that ask you to apply what you know, so practice reasoning from a patient to a diagnosis, a location, a mechanism or a next step.</p>
+<h2 id="exam-at-a-glance">Exam at a glance</h2>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Topic group</th>
+<th>Questions</th>
+<th>What it mostly asks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Psychiatric diagnosis and mental status</td>
+<td>9</td>
+<td>Name the disorder from its defining feature; predict the mental status or associated finding</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Psychiatric management, suicide and psychopharmacology</td>
+<td>10–11</td>
+<td>First-line therapy, safety steps, drug choice with comorbidities, drug monitoring and side effects</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Spinal cord, nerve, muscle and demyelination</td>
+<td>11</td>
+<td>Localize from sensory, motor and reflex patterns; UMN vs. LMN; mechanism of weakness</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Brainstem, cranial nerves and eye movements</td>
+<td>6</td>
+<td>Level and side from cranial nerve signs; pupils, gaze and sympathetic pathways</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Stroke, vascular territories and hemorrhage</td>
+<td>7</td>
+<td>Vessel from the deficit or image; bleed type from the history and CT shape; what happens next</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Cortex, limbic system, hypothalamus and sleep</td>
+<td>6</td>
+<td>Cortical syndromes, memory circuitry, hypothalamic functions, sleep mechanisms</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Movement disorders, cerebellum and dementia</td>
+<td>6</td>
+<td>Diagnosis, structure involved, course and pathophysiology</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Seizures and headache</td>
+<td>5</td>
+<td>Classify and localize seizures, the right diagnostic test, headache types</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Ventricles, development, imaging and tumors on imaging</td>
+<td>5</td>
+<td>CSF flow, ventricular relationships, neural tube development, imaging choice</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Neuropathology</td>
+<td>6</td>
+<td>Tumor by setting, genetics, gross and microscopic findings</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Neuropharmacology</td>
+<td>8</td>
+<td>Drug of choice, drug mechanism, withdrawal and reversal</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>about 80</strong></td>
+<td>Groups 1–2 are the psychiatry block; groups 3–11 are cumulative</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="where-to-spend-your-time">Where to spend your time</h3>
+<ul>
+<li><strong>Psychiatry (groups 1–2) is a quarter of the exam</strong> and is all new material since Exam 5. Know the boundaries between look-alike disorders (mood vs. psychotic, the personality clusters, the anxiety disorders), and know first-line treatment and safety steps.</li>
+<li><strong>Localization is still the backbone of the cumulative half.</strong> Groups 3–5 together are about 24 questions. Practice working out level, side and tract from an exam, and vessel from a deficit or image.</li>
+<li><strong>Expect several items on one idea from different angles.</strong> Recurring concepts: eye movement pathways (internuclear control and the pupil), the posterior circulation, a hyperkinetic movement disorder, primary headache with autonomic features, demyelination, and memory circuitry.</li>
+<li><strong>Images matter.</strong> Expect CT and MRI (bleeds, infarcts, tumors, spinal cord), gross specimens and histology. Know what each modality shows best.</li>
+<li><strong>None of the block exam questions are reused</strong>, but the concepts behind them are. If you missed a concept on Exams 1–5, it is worth reviewing.</li>
+</ul>
+<h2 id="s1">1. Psychiatric diagnosis and mental status (9 questions)</h2>
+<p>Most of these items give you a patient and ask for the disorder, or give you the disorder and ask what else you would see on mental status exam. The skill is finding the one feature that separates look-alikes: timing, duration, level of function, or whether symptoms persist outside a mood episode.</p>
+<h3 id="mood-and-psychotic-disorders-timing-is-the-key">Mood and psychotic disorders: timing is the key</h3>
+<p>Psychosis can appear in mood disorders, primary psychotic disorders and the overlap between them. Ask two questions: are there mood episodes, and do psychotic symptoms ever occur when mood is normal?</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Disorder</th>
+<th>Mood episodes</th>
+<th>Psychosis</th>
+<th>Duration and function cues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bipolar I</td>
+<td>Mania (≥ 7 days, or any length if hospitalized)</td>
+<td>Only during mood episodes, if present</td>
+<td>Mania impairs function or needs hospitalization</td>
+</tr>
+<tr class="even">
+<td>Bipolar II</td>
+<td>Hypomania (≥ 4 days) plus major depression</td>
+<td>Never in hypomania</td>
+<td>Change is observable by others but function is preserved</td>
+</tr>
+<tr class="odd">
+<td>Major depression with psychotic features</td>
+<td>Depression</td>
+<td>Only during the episode</td>
+<td>Mood-congruent themes (guilt, ruin) are common</td>
+</tr>
+<tr class="even">
+<td>Persistent depressive disorder</td>
+<td>Chronic low mood ≥ 2 years</td>
+<td>No</td>
+<td>Milder, long-standing</td>
+</tr>
+<tr class="odd">
+<td>Brief psychotic disorder</td>
+<td>None required</td>
+<td>Yes</td>
+<td>1 day to &lt; 1 month, full return to baseline</td>
+</tr>
+<tr class="even">
+<td>Schizophreniform</td>
+<td>None required</td>
+<td>Yes</td>
+<td>1 to &lt; 6 months</td>
+</tr>
+<tr class="odd">
+<td>Schizophrenia</td>
+<td>Brief or absent relative to psychosis</td>
+<td>Yes</td>
+<td>≥ 6 months with functional decline</td>
+</tr>
+<tr class="even">
+<td>Schizoaffective</td>
+<td>Major mood episodes for most of the illness</td>
+<td>Yes, including ≥ 2 weeks with normal mood</td>
+<td>Psychosis outlasts the mood episode</td>
+</tr>
+<tr class="odd">
+<td>Delusional disorder</td>
+<td>Not prominent</td>
+<td>Delusions only, function largely preserved</td>
+<td>≥ 1 month</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Hypomania vs. mania.</strong> Both share elevated or irritable mood with DIGFAST features (distractibility, impulsivity, grandiosity, flight of ideas, increased activity, decreased need for sleep, talkativeness). Hypomania is shorter, does not impair function and never includes psychosis. Depression produces the opposite mental status findings: psychomotor slowing, latency of speech, poverty of content.</p>
+<h3 id="mental-status-exam-vocabulary">Mental status exam vocabulary</h3>
+<p>You should be able to name a finding from a description and match it to the disorder where it shows up.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>What it looks like</th>
+<th>Typical setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flight of ideas</td>
+<td>Rapid jumps between loosely connected ideas</td>
+<td>Mania, hypomania</td>
+</tr>
+<tr class="even">
+<td>Clanging</td>
+<td>Words chosen by sound (rhymes, puns)</td>
+<td>Mania, psychosis</td>
+</tr>
+<tr class="odd">
+<td>Tangentiality / circumstantiality</td>
+<td>Never reaches the point / reaches it after detours</td>
+<td>Psychosis, mania / anxiety, OCPD, normal</td>
+</tr>
+<tr class="even">
+<td>Thought insertion, broadcasting</td>
+<td>Belief that thoughts are placed in or leak from the mind</td>
+<td>Psychosis</td>
+</tr>
+<tr class="odd">
+<td>Catalepsy, waxy flexibility, posturing</td>
+<td>Holding a fixed posture against gravity or as placed</td>
+<td>Catatonia</td>
+</tr>
+<tr class="even">
+<td>Echolalia, echopraxia, negativism, mutism</td>
+<td>Mimicking speech or movement, opposing instructions, not speaking</td>
+<td>Catatonia</td>
+</tr>
+<tr class="odd">
+<td>Cataplexy</td>
+<td>Sudden loss of muscle tone with emotion, consciousness preserved</td>
+<td>Narcolepsy (not catatonia)</td>
+</tr>
+<tr class="even">
+<td>Confabulation</td>
+<td>Filling memory gaps with fabricated detail</td>
+<td>Korsakoff syndrome</td>
+</tr>
+<tr class="odd">
+<td>Compulsions</td>
+<td>Repetitive, unwanted acts that relieve anxiety</td>
+<td>OCD</td>
+</tr>
+<tr class="even">
+<td>Alogia, flat affect, avolition</td>
+<td>Poverty of speech, reduced expression and drive</td>
+<td>Negative symptoms of schizophrenia</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Same concept from different angles.</strong> Catatonia is a syndrome, not a diagnosis. It occurs with mood disorders, schizophrenia and medical causes (encephalitis, lupus, drug toxicity). Know its motor signs by name, and be able to tell its signs apart from findings in other disorders that sound similar.</p>
+</blockquote>
+<h3 id="personality-disorders-by-cluster">Personality disorders by cluster</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Cluster</th>
+<th>Disorder</th>
+<th>Core feature</th>
+<th>How it differs from its neighbor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A (odd)</td>
+<td>Paranoid</td>
+<td>Pervasive distrust</td>
+<td>Not psychotic; no eccentric speech</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>Schizoid</td>
+<td>Detached, no interest in relationships</td>
+<td>Content to be alone; not odd or magical</td>
+</tr>
+<tr class="odd">
+<td>A</td>
+<td>Schizotypal</td>
+<td>Eccentric behavior, odd speech, magical thinking, social anxiety</td>
+<td>Social anxiety persists even with familiar people</td>
+</tr>
+<tr class="even">
+<td>B (dramatic)</td>
+<td>Borderline</td>
+<td>Unstable relationships and self-image, self-harm, emptiness</td>
+<td>Fear of abandonment; affective instability</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>Antisocial, histrionic, narcissistic</td>
+<td>Disregard for others / attention-seeking / grandiosity</td>
+<td>Antisocial requires conduct problems before 15</td>
+</tr>
+<tr class="even">
+<td>C (anxious)</td>
+<td>Avoidant</td>
+<td>Wants relationships but fears rejection</td>
+<td>Desire for contact distinguishes it from schizoid</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>Dependent</td>
+<td>Needs others to make decisions and meet needs</td>
+<td>Clinging rather than avoiding</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>Obsessive-compulsive (OCPD)</td>
+<td>Perfectionism, rigidity, control</td>
+<td>Ego-syntonic, unlike OCD</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="anxiety-disorders-and-phobias">Anxiety disorders and phobias</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Disorder</th>
+<th>What is feared</th>
+<th>Clue in the stem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Panic disorder</td>
+<td>Recurrent unexpected attacks and fear of the next one</td>
+<td>Sudden peaks of autonomic symptoms</td>
+</tr>
+<tr class="even">
+<td>Agoraphobia</td>
+<td>Situations where escape or help is hard (transport, open or enclosed spaces, crowds, lines, leaving home alone)</td>
+<td>Avoids these situations or endures them only with a companion</td>
+</tr>
+<tr class="odd">
+<td>Social anxiety disorder</td>
+<td>Scrutiny or embarrassment in social or performance situations</td>
+<td>Fear of being judged</td>
+</tr>
+<tr class="even">
+<td>Specific phobia</td>
+<td>One object or situation (heights, flying, animals, storms, blood)</td>
+<td>Narrow, circumscribed fear</td>
+</tr>
+<tr class="odd">
+<td>Generalized anxiety disorder</td>
+<td>Many everyday worries for ≥ 6 months</td>
+<td>Restlessness, poor sleep, muscle tension</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="neurodevelopmental-reproductive-related-and-substance-related-presentations">Neurodevelopmental, reproductive-related and substance-related presentations</h3>
+<ul>
+<li><strong>Autism spectrum disorder</strong> needs persistent deficits in social communication (back-and-forth conversation, nonverbal communication such as eye contact and gesture, making and keeping relationships) plus at least two kinds of restricted, repetitive behavior: stereotyped movements or speech (hand flapping, echolalia), insistence on sameness or rigid routines (including eating only a narrow set of the same foods), narrow interests of unusual intensity, and over- or under-reaction to sensory input. Symptoms begin in early development and impair function.</li>
+<li><strong>Premenstrual dysphoric disorder</strong> needs at least five symptoms in the final week before menses that ease within a few days after menses starts and are minimal the week after. At least one must be a core mood symptom: marked lability, irritability or anger, depressed mood or hopelessness, or anxiety and tension. The rest come from a broader list: less interest in usual activities, poor concentration, fatigue, appetite change or cravings, sleeping too much or too little, feeling out of control or overwhelmed, and physical symptoms such as breast tenderness, bloating, weight gain or joint aches. Confirm the cycle-linked pattern with prospective daily ratings over at least two cycles, and rule out a premenstrual flare of another disorder.</li>
+<li><strong>Delirium</strong> is an acute, fluctuating disturbance of attention and awareness caused by a medical condition, a substance or withdrawal. Think in two layers. Predisposing factors make the brain vulnerable: older age, dementia or other cognitive impairment, earlier brain injury or stroke, sensory impairment, frailty, heavy alcohol use and serious medical illness. Precipitating factors trigger the episode: infection, surgery, metabolic or electrolyte disturbance, hypoxia, pain, and drugs such as sedatives, anticholinergics and opioids. Low-dose antipsychotics such as haloperidol are used short-term for severe agitation; they treat symptoms, not the cause.</li>
+</ul>
+<p><strong>Intoxication syndromes</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Substance</th>
+<th>Distinguishing signs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Alcohol, benzodiazepines</td>
+<td>Ataxia, slurred speech, sedation, respiratory depression in overdose</td>
+</tr>
+<tr class="even">
+<td>Opioids</td>
+<td>Pinpoint pupils, respiratory depression, sedation</td>
+</tr>
+<tr class="odd">
+<td>Cocaine, amphetamines</td>
+<td>Dilated pupils, tachycardia, hypertension, paranoia, hyperthermia, arrhythmia</td>
+</tr>
+<tr class="even">
+<td>MDMA</td>
+<td>Hyperthermia, bruxism, hyponatremia, serotonin toxicity</td>
+</tr>
+<tr class="odd">
+<td>PCP</td>
+<td>Violence, vertical or rotary nystagmus, ataxia, hypertension, analgesia</td>
+</tr>
+<tr class="even">
+<td>LSD, psilocybin</td>
+<td>Visual distortions, synesthesia, dilated pupils, few vital sign changes</td>
+</tr>
+<tr class="odd">
+<td>Cannabis</td>
+<td>Red eyes, increased appetite, dry mouth, slowed time perception</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="from-the-review-sessions">From the review sessions</h3>
+<p>These points come from the main-campus psychiatry and pharmacology review sessions and fill in what the tables above do not cover.</p>
+<p><strong>Depression and its look-alikes</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Presentation</th>
+<th>Defining feature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Major depressive disorder</td>
+<td>At least 5 symptoms (including depressed mood or anhedonia) for at least 2 weeks</td>
+</tr>
+<tr class="even">
+<td>MDD with atypical features</td>
+<td>Mood brightens with good news; increased appetite and sleep; heavy, leaden limbs; sensitivity to rejection</td>
+</tr>
+<tr class="odd">
+<td>Peripartum onset</td>
+<td>Onset in pregnancy or within 4 weeks of delivery. Postpartum blues are mild, start within days and pass by 2 weeks without impairment. Postpartum psychosis is rare but an emergency (risk of infanticide) and needs hospitalization</td>
+</tr>
+<tr class="even">
+<td>Seasonal pattern</td>
+<td>Episodes begin and remit at the same time of year for at least 2 years</td>
+</tr>
+<tr class="odd">
+<td>Persistent depressive disorder</td>
+<td>Sub-threshold depressed mood for at least 2 years (1 year in children and adolescents). PDD plus a major depressive episode is "double depression"</td>
+</tr>
+<tr class="even">
+<td>Cyclothymic disorder</td>
+<td>At least 2 years of hypomanic and depressive symptoms that never meet full criteria for an episode</td>
+</tr>
+<tr class="odd">
+<td>Bereavement</td>
+<td>Not a disorder. Sadness comes in waves mixed with positive memories; self-esteem is intact; no suicidal plan, psychosis or marked slowing; function continues</td>
+</tr>
+<tr class="even">
+<td>Demoralization</td>
+<td>Not a disorder. Helplessness, hopelessness and loss of meaning after an illness</td>
+</tr>
+<tr class="odd">
+<td>Substance- or medication-induced</td>
+<td>Starts during or soon after a substance (steroids, beta-blockers, illicit drugs) and resolves when it is stopped</td>
+</tr>
+<tr class="even">
+<td>Due to a medical condition</td>
+<td>For example multiple sclerosis, stroke, lupus or thyroid disease</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Psychosis: more of the differential.</strong> Psychosis in mania tends to be grandiose, religious or sexual; in depression it is mood-congruent (guilt, sin, voices calling the person worthless). In bipolar II, psychosis can occur only during the depressive episodes. Substance-induced psychosis starts abruptly and clears soon after the substance is stopped. Delirium brings hallucinations with inattention and a fluctuating level of consciousness. Cluster A personality disorders are lifelong and odd but do not include hallucinations or disorganized thinking. Persistent depressive disorder and cyclothymia never include psychosis.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Schizophrenia prognosis</th>
+<th>Better</th>
+<th>Worse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sex</td>
+<td>Female</td>
+<td>Male</td>
+</tr>
+<tr class="even">
+<td>Onset</td>
+<td>Abrupt, later</td>
+<td>Insidious, early</td>
+</tr>
+<tr class="odd">
+<td>Symptoms</td>
+<td>Mainly positive; mood symptoms present</td>
+<td>Mainly negative</td>
+</tr>
+<tr class="even">
+<td>Course and background</td>
+<td>Few relapses, good premorbid function, good support</td>
+<td>Frequent relapses, poor premorbid function, family history, substance use</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>More mental status terms.</strong> Perseveration is returning to the same idea whatever is asked. Delusions are classed by theme: persecutory, grandiose, referential (things are about or meant for the person) and somatic. An illusion misreads a real stimulus; a hallucination has no stimulus. Depersonalization is feeling that one's self or body is unreal; derealization is feeling that the outside world is unreal. Typical mental status pictures: depression (unkempt, slowed, long pauses, quiet speech), mania (pressured speech, flight of ideas, clanging, expansive affect, grandiosity), anxiety (restlessness, tremor, hypervigilance, ruminations) and psychosis (disorganization, thought blocking, flat affect, delusions).</p>
+<p><strong>Anxiety, OCD-related and trauma disorders</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Disorder</th>
+<th>Key criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Panic disorder</td>
+<td>Unexpected attacks that peak within minutes with at least 4 symptoms, followed by at least a month of worry about further attacks or a change in behavior; linked with mitral valve prolapse</td>
+</tr>
+<tr class="even">
+<td>Agoraphobia</td>
+<td>Fear or avoidance of at least 2 of: public transport, open spaces, enclosed spaces, lines or crowds, being outside the home alone. It can occur with or without panic disorder</td>
+</tr>
+<tr class="odd">
+<td>OCD</td>
+<td>Ego-dystonic obsessions and compulsions taking more than an hour a day; associated with tic disorders</td>
+</tr>
+<tr class="even">
+<td>Hoarding</td>
+<td>Persistent difficulty discarding possessions, so living spaces become unusable</td>
+</tr>
+<tr class="odd">
+<td>Body dysmorphic disorder</td>
+<td>Preoccupation with a flaw others cannot see or think slight, with repetitive checking or grooming</td>
+</tr>
+<tr class="even">
+<td>Trichotillomania, excoriation</td>
+<td>Recurrent hair pulling or skin picking despite attempts to stop</td>
+</tr>
+<tr class="odd">
+<td>PTSD</td>
+<td>After a qualifying trauma: intrusion, avoidance, negative thoughts and mood, and arousal symptoms for more than 1 month</td>
+</tr>
+<tr class="even">
+<td>Acute stress disorder</td>
+<td>The same kind of picture lasting 3 days to 1 month, with at least 9 of 14 symptoms</td>
+</tr>
+</tbody>
+</table></div>
+<p>Always consider medical and substance causes of anxiety: hyperthyroidism, arrhythmias, asthma, pheochromocytoma, caffeine or stimulants, steroids, and withdrawal from alcohol, sedatives or opioids.</p>
+<p><strong>Withdrawal syndromes</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Substance</th>
+<th>Withdrawal picture</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Alcohol, benzodiazepines</td>
+<td>Anxiety, tremor, sweating, tachycardia, hypertension, seizures, hallucinosis. The only withdrawals that can kill</td>
+</tr>
+<tr class="even">
+<td>Opioids</td>
+<td>Dilated pupils, yawning, tearing and runny nose, gooseflesh, muscle aches, cramps, diarrhea; unpleasant but rarely dangerous</td>
+</tr>
+<tr class="odd">
+<td>Stimulants</td>
+<td>Fatigue, increased sleep and appetite, depressed mood, suicidal thinking (the crash)</td>
+</tr>
+<tr class="even">
+<td>Cannabis</td>
+<td>Insomnia, irritability, restlessness, low mood, aggression</td>
+</tr>
+</tbody>
+</table></div>
+<p>Alcohol withdrawal follows a clock: tremor and anxiety within hours, seizures peaking at 24 to 48 hours, delirium tremens (confusion with autonomic surge) from 48 to 96 hours. Combining alcohol or opioids with benzodiazepines is the classic life-threatening intoxication, through respiratory depression.</p>
+<p><strong>Delirium: common triggers.</strong> Benzodiazepines, anticholinergic drugs (diphenhydramine, hydroxyzine), opioids, muscle relaxants and steroids; infection (urinary infection in older adults), surgery, pain, poor sleep and immobility. Look for fluctuating alertness, disorientation, inattention (serial 7s, spelling WORLD backward) and visual hallucinations or picking at the air, in either a hyperactive or a quiet, hypoactive form.</p>
+<p><strong>Child and adolescent psychiatry.</strong> Get collateral from parents and teachers: children report internal states such as anxiety and sadness better, while adults report behavior and duration better, and some diagnoses, such as ADHD, need symptoms in more than one setting. Disorders to separate: disruptive mood dysregulation disorder (severe recurrent outbursts with irritable mood between them), oppositional defiant disorder (defiant toward authority but gets along with peers), conduct disorder (violates others' rights; linked to adult antisocial PD), ADHD, autism and reactive attachment disorder (after severe early neglect). Separation anxiety disorder and selective mutism are childhood diagnoses. Children with depression or anxiety often have physical complaints; anxious children may become oppositional to avoid a feared situation; bipolar disorder in youth looks more chronic and reactive; and young children with PTSD may re-enact the trauma in repetitive play.</p>
+<p><strong>Eating disorders.</strong> Anorexia nervosa: restriction and low body weight, sometimes with bingeing or purging. Bulimia nervosa: binges with loss of control plus compensation (vomiting, laxatives, exercise), usually at normal weight. Binge-eating disorder: binges without compensation. Pica: eating non-food substances; check for iron or zinc deficiency.</p>
+<h3 id="high-yield-clues" class="hy">High-yield clues</h3>
+<p>Each clue names what to notice in a stem and what to work out from it.</p>
+<ul>
+<li><strong>Psychosis and mood together:</strong> ask what happens when the mood is normal. Psychosis that persists for weeks without mood symptoms changes the diagnosis.</li>
+<li><strong>An elevated mood episode:</strong> check duration, function, psychosis and hospitalization before choosing between hypomania and mania.</li>
+<li><strong>An isolated, odd or withdrawn adult:</strong> decide why they are alone (no interest, fear of rejection, odd beliefs or distrust) to place the personality disorder.</li>
+<li><strong>An anxious patient who avoids places:</strong> name what is feared, and count the kinds of situations avoided.</li>
+<li><strong>A patient who is mute, rigid or holds odd postures:</strong> use the catatonia vocabulary precisely, and do not confuse catalepsy with cataplexy.</li>
+<li><strong>A young child with social differences:</strong> check both halves of autism (social communication and restricted, repetitive behavior), and know examples of each.</li>
+<li><strong>Mood symptoms tied to the menstrual cycle:</strong> know the full PMDD symptom list and what it excludes.</li>
+<li><strong>Acute confusion in a medically ill patient:</strong> separate the vulnerable brain (predisposing factors) from the trigger (precipitating factors).</li>
+<li><strong>An intoxicated or withdrawing patient:</strong> use the pupils, the eye movements and the vital signs to name the substance.</li>
+<li><strong>A grieving or ill patient who is sad:</strong> decide whether it is bereavement, demoralization or a depressive disorder.</li>
+</ul>
+<h2 id="s2">2. Psychiatric management, suicide and psychopharmacology (10–11 questions)</h2>
+<p>These items ask what to do first, which therapy or drug fits this patient, and what to monitor. Read the stem for the detail that rules options out: a comorbidity, a pregnancy, a safety concern or a side effect.</p>
+<h3 id="first-steps-and-evidence-based-psychotherapy">First steps and evidence-based psychotherapy</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>First priority or best-evidence approach</th>
+<th>Why the alternatives fall short</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Borderline personality disorder with self-harm</td>
+<td>Dialectical behavior therapy (DBT)</td>
+<td>Only therapy with strong evidence for fewer suicide attempts and admissions in this group</td>
+</tr>
+<tr class="even">
+<td>Underweight patient with an eating disorder</td>
+<td>Medical stabilization and weight restoration, watching for refeeding syndrome</td>
+<td>Therapy and drugs work poorly in a starved brain</td>
+</tr>
+<tr class="odd">
+<td>Bulimia nervosa, binge-eating disorder</td>
+<td>CBT; fluoxetine is FDA-approved for bulimia</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Major depression (mild to moderate)</td>
+<td>CBT, interpersonal therapy, behavioral activation, or an SSRI</td>
+<td>Psychoanalysis lacks evidence as first-line</td>
+</tr>
+<tr class="odd">
+<td>Panic disorder, specific phobia, agoraphobia, OCD</td>
+<td>Exposure-based CBT (exposure and response prevention for OCD)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>PTSD</td>
+<td>Trauma-focused therapy (prolonged exposure, cognitive processing therapy)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="suicide-risk-theory-and-discharge-planning">Suicide: risk, theory and discharge planning</h3>
+<ul>
+<li><strong>Interpersonal theory of suicide (Joiner).</strong> Death by suicide requires three conditions together: thwarted belongingness, perceived burdensomeness and an acquired capability for lethal self-injury. Keep this separate from physician-specific warning signs and from the "compulsive triad" (guilt, self-doubt, exaggerated responsibility) described in physicians.</li>
+<li><strong>Safety planning</strong> is done with anyone who has suicidal thoughts, a recent attempt, or is leaving a psychiatric unit. It covers warning signs, internal coping strategies, people and places for distraction, people to ask for help, professional contacts, and reducing access to lethal means.</li>
+<li><strong>No-harm contracts do not prevent suicide.</strong> They are not a substitute for a safety plan.</li>
+<li>Risk rises in the weeks after psychiatric discharge, so planning before discharge matters even when the patient feels better.</li>
+</ul>
+<h3 id="antipsychotics-potency-predicts-side-effects">Antipsychotics: potency predicts side effects</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Examples</th>
+<th>Main risks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>High-potency first generation</td>
+<td>Haloperidol, fluphenazine</td>
+<td>Extrapyramidal symptoms (dystonia, akathisia, parkinsonism, tardive dyskinesia), hyperprolactinemia</td>
+</tr>
+<tr class="even">
+<td>Low-potency first generation</td>
+<td>Chlorpromazine, thioridazine</td>
+<td>Sedation, orthostasis, anticholinergic effects (constipation, urinary retention, dry mouth), weight gain; fewer EPS</td>
+</tr>
+<tr class="odd">
+<td>Second generation</td>
+<td>Risperidone, olanzapine, quetiapine, aripiprazole</td>
+<td>Metabolic syndrome (monitor weight, glucose or HbA1c, lipids); risperidone raises prolactin</td>
+</tr>
+<tr class="even">
+<td>Clozapine</td>
+<td></td>
+<td>Agranulocytosis (monitor ANC), seizures, myocarditis, sialorrhea; reserved for treatment-resistant schizophrenia</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Drug emergencies to recognize</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Syndrome</th>
+<th>Trigger</th>
+<th>Key features</th>
+<th>Key test or action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Neuroleptic malignant syndrome</td>
+<td>Dopamine blockers (or stopping levodopa)</td>
+<td>Fever, "lead-pipe" rigidity, altered mental status, autonomic instability; develops over days</td>
+<td>Creatine kinase (rhabdomyolysis); stop the drug, cool, dantrolene or bromocriptine</td>
+</tr>
+<tr class="even">
+<td>Serotonin syndrome</td>
+<td>Serotonergic combinations</td>
+<td>Clonus, hyperreflexia, agitation, diarrhea; develops over hours</td>
+<td>Clinical diagnosis; stop drugs, cyproheptadine</td>
+</tr>
+<tr class="odd">
+<td>Anticholinergic toxicity</td>
+<td>Anticholinergics, TCAs, low-potency antipsychotics</td>
+<td>Dry, flushed, dilated pupils, urinary retention</td>
+<td>Supportive; physostigmine in selected cases</td>
+</tr>
+<tr class="even">
+<td>Lithium toxicity</td>
+<td>Dehydration, NSAIDs, thiazides, ACE inhibitors</td>
+<td>Tremor, ataxia, confusion, vomiting</td>
+<td>Serum lithium level; fluids, dialysis if severe</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="mood-stabilizers-know-the-monitoring">Mood stabilizers: know the monitoring</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Drug</th>
+<th>Monitor</th>
+<th>Notable risks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lithium</td>
+<td>Serum levels, TSH, kidney function, calcium</td>
+<td>Hypothyroidism, nephrogenic diabetes insipidus, narrow therapeutic index, Ebstein anomaly</td>
+</tr>
+<tr class="even">
+<td>Valproate</td>
+<td>LFTs, CBC (platelets), levels</td>
+<td>Hepatotoxicity, pancreatitis, weight gain, PCOS, neural tube defects</td>
+</tr>
+<tr class="odd">
+<td>Carbamazepine</td>
+<td>CBC, sodium, LFTs</td>
+<td>Agranulocytosis, SIADH, Stevens-Johnson (HLA-B*1502), enzyme induction</td>
+</tr>
+<tr class="even">
+<td>Lamotrigine</td>
+<td>Slow titration</td>
+<td>Stevens-Johnson syndrome; best for bipolar depression</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="antidepressants-matching-the-drug-to-the-patient">Antidepressants: matching the drug to the patient</h3>
+<ul>
+<li><strong>Contraindications that steer the choice.</strong> Bupropion lowers the seizure threshold, so avoid it in bulimia with purging or anorexia (electrolyte shifts). TCAs are dangerous in overdose and with electrolyte or cardiac problems. MAOIs require dietary and drug interaction precautions.</li>
+<li><strong>Half-life matters.</strong> Fluoxetine's long half-life makes missed doses and discontinuation forgiving; paroxetine and venlafaxine cause the worst discontinuation symptoms.</li>
+<li><strong>Side-effect matching.</strong> Mirtazapine for poor appetite and insomnia; bupropion when sexual side effects or weight gain are a concern; SNRIs or TCAs when neuropathic pain coexists.</li>
+<li><strong>Pregnancy and breastfeeding.</strong> Untreated depression carries real risks (preterm birth, low birth weight, pre-eclampsia, poor bonding). Medication risks are small and come mainly from observational studies. The right conversation weighs both and is shared decision-making; many patients continue SSRIs in pregnancy and while breastfeeding.</li>
+</ul>
+<h3 id="tics-and-tourette-syndrome">Tics and Tourette syndrome</h3>
+<p>Tourette syndrome needs multiple motor tics and at least one vocal tic for more than a year, starting before age 18. Behavioral therapy (comprehensive behavioral intervention for tics) is first-line. Alpha-2 agonists (clonidine, guanfacine) are first-line drugs, especially with ADHD; antipsychotics such as aripiprazole are used for severe tics. Stimulants and atomoxetine treat ADHD but can worsen tics in some patients.</p>
+<h3 id="from-the-review-sessions-1">From the review sessions</h3>
+<p>These points come from the main-campus psychiatry and pharmacology review sessions.</p>
+<p><strong>Psychotherapies and what each targets</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Therapy</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Supportive</td>
+<td>Support and education through a hard period or transition; bolsters coping and self-esteem; useful with or without a diagnosis</td>
+</tr>
+<tr class="even">
+<td>Psychodynamic / psychoanalytic</td>
+<td>Unconscious conflicts from early relationships; transference and countertransference; long-term</td>
+</tr>
+<tr class="odd">
+<td>Interpersonal (IPT)</td>
+<td>Improving relationships to relieve depression and grief</td>
+</tr>
+<tr class="even">
+<td>Cognitive behavioral (CBT)</td>
+<td>Links among thoughts, feelings and behavior; cognitive restructuring; behavioral activation; homework</td>
+</tr>
+<tr class="odd">
+<td>Dialectical behavior (DBT)</td>
+<td>Built for borderline PD: mindfulness, emotion regulation, distress tolerance, interpersonal effectiveness; individual and group sessions plus phone coaching</td>
+</tr>
+<tr class="even">
+<td>Motivational interviewing</td>
+<td>Resolving ambivalence about change, matched to the stage of change</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Disorder</th>
+<th>Therapy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Panic disorder</td>
+<td>CBT</td>
+</tr>
+<tr class="even">
+<td>Agoraphobia</td>
+<td>Exposure therapy (CBT if panic is present)</td>
+</tr>
+<tr class="odd">
+<td>GAD</td>
+<td>CBT, relaxation training, mindfulness</td>
+</tr>
+<tr class="even">
+<td>Specific phobia</td>
+<td>Exposure: systematic desensitization (graded hierarchy with relaxation) or flooding (straight to the most feared situation)</td>
+</tr>
+<tr class="odd">
+<td>OCD</td>
+<td>Exposure and response prevention</td>
+</tr>
+<tr class="even">
+<td>PTSD</td>
+<td>Prolonged exposure, cognitive processing therapy</td>
+</tr>
+<tr class="odd">
+<td>Trichotillomania, excoriation</td>
+<td>Habit reversal training</td>
+</tr>
+<tr class="even">
+<td>Hoarding, body dysmorphic disorder</td>
+<td>CBT</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Anxiety medications</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Drug</th>
+<th>Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SSRIs, SNRIs</td>
+<td>First-line long-term for nearly all anxiety disorders, OCD and PTSD</td>
+<td>OCD needs higher doses and longer trials</td>
+</tr>
+<tr class="even">
+<td>Clomipramine</td>
+<td>OCD that has not responded to an SSRI</td>
+<td>Serotonergic TCA; more side effects</td>
+</tr>
+<tr class="odd">
+<td>Buspirone (5-HT1A partial agonist)</td>
+<td>GAD only</td>
+<td>Slow onset, not as needed; useful when SSRIs cause sexual side effects; little sedation or misuse</td>
+</tr>
+<tr class="even">
+<td>Benzodiazepines</td>
+<td>Short-term relief while an SSRI starts working</td>
+<td>Avoid long-term and in substance use, with opioids, sleep apnea or dementia; ineffective for OCD and PTSD; lorazepam, oxazepam and temazepam are safest in liver disease</td>
+</tr>
+<tr class="odd">
+<td>Hydroxyzine</td>
+<td>As-needed anxiety and insomnia without a benzodiazepine</td>
+<td>Sedating, anticholinergic in older adults</td>
+</tr>
+<tr class="even">
+<td>Propranolol</td>
+<td>Performance anxiety (tremor, racing heart)</td>
+<td>Avoid in asthma</td>
+</tr>
+<tr class="odd">
+<td>Prazosin (alpha-1 blocker)</td>
+<td>PTSD nightmares</td>
+<td>Added when nightmares persist</td>
+</tr>
+</tbody>
+</table></div>
+<p>Specific phobia usually does not respond to medication. SSRIs do not help trichotillomania.</p>
+<p><strong>Depression treatment details.</strong> Duloxetine (an SNRI) treats depression and chronic pain together. If an SNRI causes intolerable side effects, switch to an SSRI rather than another SNRI. Bupropion has fewer sexual side effects. Venlafaxine raises blood pressure at higher doses. Trazodone can cause priapism, a medical emergency. Treatment-resistant depression means at least two adequate antidepressant trials have failed. Options include augmentation (lithium, an antipsychotic), MAOIs, ECT, repetitive transcranial magnetic stimulation (rTMS) and ketamine or esketamine.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ECT</td>
+<td>Most effective treatment for severe or resistant depression; also for bipolar depression, catatonia and resistant psychosis. Main side effect is short-term memory loss. Pregnancy is not a contraindication; relative contraindications include a brain mass, unstable aneurysm and severe heart disease</td>
+</tr>
+<tr class="even">
+<td>rTMS</td>
+<td>Better tolerated than ECT, with no anesthesia or memory effects, but less effective and needs daily sessions; avoid with seizure risk or implanted metal or devices</td>
+</tr>
+<tr class="odd">
+<td>Ketamine, esketamine</td>
+<td>NMDA receptor antagonists with a rapid antidepressant effect. Monitor during dosing for dissociation, hallucinations, raised blood pressure and nausea. Esketamine is given with an oral antidepressant</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Bipolar treatment.</strong> Acute mania: lithium, valproate or an antipsychotic. Maintenance: lithium. Bipolar depression: lamotrigine, quetiapine or lurasidone. Lamotrigine does not treat acute mania. An antidepressant alone can trigger mania. If lithium causes nephrogenic diabetes insipidus, switch to a second-generation antipsychotic such as olanzapine. In pregnancy, avoid valproate; lamotrigine is often preferred for maintenance, and lithium can be used with monitoring (small absolute risk of Ebstein anomaly).</p>
+<p><strong>Antipsychotic details</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Dopamine pathway</th>
+<th>Effect of blocking it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mesolimbic (overactive in psychosis)</td>
+<td>Reduces positive symptoms</td>
+</tr>
+<tr class="even">
+<td>Mesocortical (underactive)</td>
+<td>Can worsen negative and cognitive symptoms</td>
+</tr>
+<tr class="odd">
+<td>Nigrostriatal</td>
+<td>Extrapyramidal effects</td>
+</tr>
+<tr class="even">
+<td>Tuberoinfundibular</td>
+<td>High prolactin: galactorrhea, amenorrhea, gynecomastia, sexual dysfunction</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Second-generation antipsychotics are first-line for schizophrenia because they cause fewer extrapyramidal effects.</li>
+<li>Risperidone raises prolactin; switching to aripiprazole, a partial D2 agonist, lowers it. Aripiprazole commonly causes akathisia.</li>
+<li>Olanzapine has the worst metabolic effects. Quetiapine causes the fewest extrapyramidal effects, so it is used for psychosis in Parkinson disease. Ziprasidone must be taken with food.</li>
+<li>Timing of movement effects: acute dystonia within hours to days (benztropine or diphenhydramine), akathisia within days to weeks (propranolol), tardive dyskinesia after months to years (VMAT2 inhibitors such as valbenazine or deutetrabenazine).</li>
+<li>Serotonin syndrome can follow a drug interaction as well as a new serotonergic drug, for example an antibiotic that blocks SSRI metabolism. Treat with stopping the drugs, IV fluids, benzodiazepines and cyproheptadine.</li>
+</ul>
+<p><strong>Substance use treatment</strong></p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Drug</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Opioid use disorder</td>
+<td>Methadone</td>
+<td>Full mu agonist; can prolong the QT interval</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Buprenorphine</td>
+<td>Partial mu agonist with a ceiling on respiratory depression; the alternative if QT prolongation develops</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Naltrexone</td>
+<td>Mu antagonist; the patient must be opioid-free first</td>
+</tr>
+<tr class="even">
+<td>Opioid overdose</td>
+<td>Naloxone</td>
+<td>Rapid reversal; short-acting, so watch for recurrence</td>
+</tr>
+<tr class="odd">
+<td>Opioid withdrawal symptoms</td>
+<td>Clonidine</td>
+<td>Eases autonomic symptoms; not maintenance</td>
+</tr>
+<tr class="even">
+<td>Benzodiazepine overdose</td>
+<td>Supportive care; flumazenil selectively</td>
+<td>Flumazenil can precipitate withdrawal seizures in dependent patients</td>
+</tr>
+<tr class="odd">
+<td>Alcohol use disorder</td>
+<td>Naltrexone</td>
+<td>Reduces craving and reward; avoid with opioid use or significant liver disease</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Acamprosate</td>
+<td>Helps maintain abstinence; fine in liver disease; avoid in severe kidney disease; three-times-daily dosing</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Disulfiram</td>
+<td>Blocks aldehyde dehydrogenase, so alcohol causes flushing and vomiting; for highly motivated patients; usable with opioids</td>
+</tr>
+<tr class="even">
+<td>Alcohol withdrawal</td>
+<td>Benzodiazepines</td>
+<td>Plus thiamine</td>
+</tr>
+<tr class="odd">
+<td>Nicotine</td>
+<td>Varenicline (partial nicotinic agonist), bupropion, nicotine replacement</td>
+<td>Avoid bupropion with seizures or eating disorders</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Child, adolescent and perinatal prescribing.</strong> Stimulants (methylphenidate, amphetamine) are first-line for ADHD; atomoxetine, a norepinephrine reuptake inhibitor, is the nonstimulant option. Alpha-2 agonists (clonidine, guanfacine) treat tics, especially with ADHD. Antipsychotics are used for irritability in autism and for severe tics. Antidepressants, antiseizure drugs used as mood stabilizers and atomoxetine carry a warning for suicidal thinking in young people. Stimulants can reduce appetite and growth and cause insomnia or tics. Perinatal depression is the most common complication of pregnancy (10 to 15%) and responds to the usual treatments.</p>
+<p><strong>Eating disorder treatment.</strong> Anorexia: weight restoration and family-based therapy. Bulimia: CBT and fluoxetine; avoid bupropion. Binge-eating disorder: CBT, SSRIs or lisdexamfetamine. Pica: treat any deficiency.</p>
+<p><strong>Borderline PD medication.</strong> Psychotherapy is the treatment of choice. SSRIs can help impulsivity, and mood stabilizers or antipsychotics can help mood swings, anger and chronic suicidal thinking.</p>
+<p><strong>Suicide risk.</strong> A previous attempt is the strongest risk factor. Others (SAD PERSONS): male sex, age over 60 or under 30, depression, alcohol or drugs, loss of rational thinking, family history, an organized plan with access to means, no support, chronic illness or pain. Further risks include recent psychiatric discharge, trauma, military service, borderline PD, impulsivity, unemployment, homelessness, hopelessness and command hallucinations. Protective factors include strong supports, children in the home, pregnancy, religious or cultural beliefs against suicide, a sense of purpose, future plans and a good alliance with clinicians. When acute risk is high, inpatient admission restricts access to lethal means.</p>
+<p><strong>Physician health.</strong> Alcohol is the substance physicians most often misuse, followed by opioids. Physicians die by suicide more often than the public, although their rates of depression are similar, and suicide is a leading cause of death in medical students.</p>
+<h3 id="high-yield-clues-1" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>Chronic self-harm with unstable relationships:</strong> know which therapy has the best evidence for reducing suicide attempts.</li>
+<li><strong>A severely underweight patient:</strong> decide what must happen before therapy or medication can work, and what to watch for while it happens.</li>
+<li><strong>A patient leaving hospital after an attempt:</strong> know what a safety plan contains, and what does not protect the patient.</li>
+<li><strong>A question about why people die by suicide:</strong> know the three conditions of the interpersonal theory, and keep them apart from the compulsive triad and physician-specific risks.</li>
+<li><strong>A child with tics:</strong> check for coexisting ADHD before choosing a drug.</li>
+<li><strong>Fever and stiffness on a new drug:</strong> decide whether it is NMS or serotonin syndrome from the drug, the tempo and the reflexes, then pick the test or treatment.</li>
+<li><strong>A patient on a mood stabilizer:</strong> match each drug to its monitoring labs and pregnancy risk.</li>
+<li><strong>A pregnant patient on an antidepressant:</strong> weigh the drug's risks against the risks of untreated illness.</li>
+<li><strong>A depressed patient with another condition:</strong> let the comorbidity (pain, eating disorder, seizures, missed doses, sexual side effects) choose the antidepressant.</li>
+<li><strong>An antipsychotic side-effect pattern:</strong> sedation, orthostasis and anticholinergic effects suggest low potency; dystonia and parkinsonism suggest high potency.</li>
+<li><strong>An alcohol or opioid use disorder:</strong> check the liver, the kidneys and current opioid use before choosing a relapse-prevention drug.</li>
+</ul>
+<h2 id="s3">3. Spinal cord, nerve, muscle and demyelination (11 questions)</h2>
+<p>This is the largest cumulative group. Almost every item can be solved by asking three questions: which modalities are lost (pain and temperature, vibration and position, strength), on which side, and are the motor signs upper or lower motor neuron?</p>
+<h3 id="the-three-long-tracts">The three long tracts</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Tract</th>
+<th>Carries</th>
+<th>Crosses</th>
+<th>Lesion below the crossing gives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dorsal columns / medial lemniscus</td>
+<td>Vibration, position, fine touch</td>
+<td>Caudal medulla</td>
+<td>Ipsilateral loss below the lesion; positive Romberg</td>
+</tr>
+<tr class="even">
+<td>Spinothalamic (anterolateral)</td>
+<td>Pain, temperature</td>
+<td>Anterior white commissure, within 1–2 segments of entry</td>
+<td>Contralateral loss starting 1–2 levels below</td>
+</tr>
+<tr class="odd">
+<td>Lateral corticospinal</td>
+<td>Voluntary movement</td>
+<td>Pyramidal decussation</td>
+<td>Ipsilateral UMN weakness below</td>
+</tr>
+<tr class="even">
+<td>Spinocerebellar</td>
+<td>Unconscious proprioception to the cerebellum</td>
+<td>Dorsal: uncrossed</td>
+<td>Ipsilateral limb ataxia without conscious sensory loss</td>
+</tr>
+<tr class="odd">
+<td>Intermediolateral cell column (T1–L2 lateral horn)</td>
+<td>Preganglionic sympathetic neurons</td>
+<td></td>
+<td>Loss of sympathetic tone: orthostatic hypotension, anhidrosis, Horner if T1</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="cord-syndromes-and-look-alikes">Cord syndromes and look-alikes</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Syndrome</th>
+<th>What is damaged</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Central cord / syrinx</td>
+<td>Crossing fibers at the commissure, then anterior horns</td>
+<td>Bilateral cape-like pain and temperature loss over a few segments; vibration spared; later LMN weakness at that level</td>
+</tr>
+<tr class="even">
+<td>Anterior cord (anterior spinal artery)</td>
+<td>Anterior two-thirds</td>
+<td>Bilateral weakness and pain/temperature loss below; dorsal columns spared</td>
+</tr>
+<tr class="odd">
+<td>Posterior column disease (tabes dorsalis)</td>
+<td>Dorsal roots and dorsal columns</td>
+<td>Lightning pains, loss of vibration and position, areflexia, sensory ataxia, Romberg sign, Argyll Robertson pupils</td>
+</tr>
+<tr class="even">
+<td>Subacute combined degeneration (B12 deficiency)</td>
+<td>Dorsal columns and lateral corticospinal tracts</td>
+<td>Loss of vibration/position plus spastic weakness, upgoing toes; often with neuropathy; reversible if treated early</td>
+</tr>
+<tr class="odd">
+<td>Hemisection (Brown-Séquard)</td>
+<td>One half of the cord</td>
+<td>Ipsilateral weakness and vibration loss, contralateral pain/temperature loss</td>
+</tr>
+<tr class="even">
+<td>Friedreich ataxia</td>
+<td>Dorsal columns, spinocerebellar and corticospinal tracts, dorsal root ganglia</td>
+<td>Teen onset; gait ataxia, dysarthria, areflexia with upgoing toes, pes cavus, scoliosis; hypertrophic cardiomyopathy is the most common cause of death; diabetes is common; GAA repeat in frataxin</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Autonomic dysreflexia.</strong> In cord injury above about T6, a noxious stimulus below the lesion (full bladder, blocked catheter, bowel impaction) triggers a reflex sympathetic surge from the isolated cord. Descending inhibition cannot reach it, so blood pressure soars. Above the lesion you see headache, flushing and sweating, and baroreflex bradycardia. Treat by sitting up and removing the trigger.</p>
+<h3 id="upper-vs-lower-motor-neuron">Upper vs. lower motor neuron</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>UMN lesion</th>
+<th>LMN lesion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tone</td>
+<td>Increased, clasp-knife spasticity</td>
+<td>Decreased, flaccid</td>
+</tr>
+<tr class="even">
+<td>Reflexes</td>
+<td>Brisk; Babinski sign</td>
+<td>Reduced or absent</td>
+</tr>
+<tr class="odd">
+<td>Bulk</td>
+<td>Mild disuse atrophy</td>
+<td>Marked atrophy</td>
+</tr>
+<tr class="even">
+<td>Fasciculations</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Examples</td>
+<td>Stroke, MS, cord compression</td>
+<td>Polio, nerve or root lesions, spinal muscular atrophy</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ALS</strong> combines both: UMN signs (brisk reflexes, Babinski) and LMN signs (atrophy, fasciculations, tongue wasting) with no sensory loss. <strong>Poliomyelitis</strong> destroys anterior horn cells: asymmetric flaccid paralysis with hyporeflexia after a febrile illness, normal sensation, risk of respiratory failure.</p>
+<h3 id="peripheral-nerve-root-and-junction">Peripheral nerve, root and junction</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Disorder</th>
+<th>Pattern</th>
+<th>Key clue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Guillain-Barré syndrome</td>
+<td>Rapid, ascending, symmetric weakness with areflexia</td>
+<td>Follows infection; CSF high protein with normal cells; autoimmune demyelination of peripheral nerves</td>
+</tr>
+<tr class="even">
+<td>Myasthenia gravis</td>
+<td>Fatigable weakness, ptosis, diplopia; normal reflexes and sensation</td>
+<td>Antibodies against the postsynaptic ACh receptor</td>
+</tr>
+<tr class="odd">
+<td>Lambert-Eaton</td>
+<td>Proximal weakness that improves with use, autonomic symptoms</td>
+<td>Antibodies against presynaptic calcium channels; small cell lung cancer</td>
+</tr>
+<tr class="even">
+<td>Common fibular (peroneal) neuropathy</td>
+<td>Foot drop, weak eversion, sensory loss over lateral leg and dorsum of foot</td>
+<td>Compression at the fibular head; ankle inversion spared</td>
+</tr>
+<tr class="odd">
+<td>L5 radiculopathy</td>
+<td>Foot drop with weak inversion and hip abduction, back pain</td>
+<td>Inversion weak distinguishes it from fibular neuropathy</td>
+</tr>
+<tr class="even">
+<td>S1 radiculopathy</td>
+<td>Weak plantar flexion, lost ankle reflex</td>
+<td>Sole and lateral foot sensory loss</td>
+</tr>
+<tr class="odd">
+<td>L4 radiculopathy</td>
+<td>Weak knee extension, lost knee reflex</td>
+<td>Medial leg sensory loss</td>
+</tr>
+<tr class="even">
+<td>Length-dependent polyneuropathy</td>
+<td>Stocking-glove sensory loss, distal weakness</td>
+<td>Diabetes, alcohol, B12</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="multiple-sclerosis">Multiple sclerosis</h3>
+<p>MS is autoimmune demyelination of the central nervous system: T cells and macrophages attack myelin and oligodendrocytes. The diagnosis rests on lesions separated in time and in space. Typical clues are optic neuritis, internuclear ophthalmoplegia (especially bilateral, in a young adult), a sensory level or band, Lhermitte sign and Uhthoff phenomenon. MRI shows periventricular, juxtacortical, infratentorial and cord lesions (enhancing when active); CSF shows oligoclonal bands.</p>
+<blockquote>
+<p><strong>Same concept from different angles.</strong> Demyelination is tested on both sides of the CNS/PNS border. Contrast an immune attack on central myelin (relapsing, hyperreflexia, oligoclonal bands) with one on peripheral myelin (acute ascending weakness, areflexia, high CSF protein), and with diseases of the neuron or junction instead of the myelin.</p>
+</blockquote>
+<h3 id="high-yield-clues-2" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>Pain and temperature lost on both sides in a band, with vibration spared:</strong> think about the fibers crossing in the center of the cord.</li>
+<li><strong>Unsteady gait that worsens with eyes closed, with lost reflexes:</strong> think about the dorsal roots and dorsal columns, not the cerebellum.</li>
+<li><strong>Weakness on one side, pain and temperature loss on the other:</strong> work out the side and level from which tracts have crossed.</li>
+<li><strong>Dizziness on standing with other autonomic failure:</strong> trace the sympathetic pathway, including the lateral horn from T1 to L2.</li>
+<li><strong>Rapidly ascending weakness with lost reflexes after an infection:</strong> decide whether the attack is on peripheral myelin, the axon or the junction, and watch the breathing.</li>
+<li><strong>Sudden severe hypertension in someone with a high cord injury:</strong> know where the sympathetic surge comes from and why the brain cannot stop it.</li>
+<li><strong>A teenager with ataxia, lost reflexes and upgoing toes:</strong> think about what kills these patients, not just what weakens them.</li>
+<li><strong>Foot drop:</strong> test inversion and the ankle reflex to separate a nerve lesion from a root lesion.</li>
+<li><strong>Flaccid weakness with no sensory loss after a febrile illness:</strong> predict the reflexes from the cell that is lost.</li>
+<li><strong>Relapsing deficits in different places in a young adult:</strong> know both the diagnosis and the immune mechanism behind it.</li>
+<li><strong>Weakness that improves with effort, or worsens with it:</strong> place the problem before or after the synapse.</li>
+</ul>
+<h2 id="s4">4. Brainstem, cranial nerves and eye movements (6 questions)</h2>
+<p>Localize in three steps: the cranial nerve sign gives the <strong>level</strong>, the long tract signs tell you <strong>medial vs. lateral</strong>, and the cranial nerve sign is on the <strong>same side</strong> as the lesion while body signs are on the opposite side.</p>
+<h3 id="brainstem-levels-and-their-cranial-nerves">Brainstem levels and their cranial nerves</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Cranial nerve nuclei</th>
+<th>Medial lesion</th>
+<th>Lateral lesion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Midbrain</td>
+<td>III, IV</td>
+<td>Ipsilateral CN III palsy + contralateral hemiparesis (cerebral peduncle); proximal PCA penetrating branches</td>
+<td>Ipsilateral CN III + contralateral ataxia or tremor (red nucleus)</td>
+</tr>
+<tr class="even">
+<td>Pons</td>
+<td>V, VI, VII, VIII</td>
+<td>Ipsilateral CN VI (± VII) + contralateral hemiparesis; basilar paramedian branches</td>
+<td>Ipsilateral facial weakness and sensory loss, hearing loss, Horner, ataxia; AICA</td>
+</tr>
+<tr class="odd">
+<td>Medulla</td>
+<td>IX, X, XII (and spinal V, vestibular)</td>
+<td>Ipsilateral tongue deviation + contralateral hemiparesis and loss of vibration/position; anterior spinal / vertebral</td>
+<td>Lateral medullary syndrome: ipsilateral face and contralateral body pain/temperature loss, Horner, hoarseness and dysphagia (nucleus ambiguus), vertigo, ipsilateral ataxia; PICA or vertebral</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two useful anchors: corticobulbar fibers to the lower face cross, so a lesion above the facial nucleus spares the forehead; and the abducens nucleus sits under the facial colliculus, where the facial nerve loops around it, so the two are often damaged together.</p>
+<h3 id="horizontal-gaze-and-the-mlf">Horizontal gaze and the MLF</h3>
+<p>The abducens nucleus contains two populations: motor neurons to the ipsilateral lateral rectus, and interneurons whose axons cross and ascend in the medial longitudinal fasciculus to the contralateral medial rectus subnucleus of CN III.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Lesion</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Abducens nerve</td>
+<td>Ipsilateral eye cannot abduct</td>
+</tr>
+<tr class="even">
+<td>Abducens nucleus</td>
+<td>Neither eye can look toward the lesion (gaze palsy)</td>
+</tr>
+<tr class="odd">
+<td>MLF (internuclear ophthalmoplegia)</td>
+<td>Ipsilateral eye cannot adduct on gaze to the opposite side; abducting eye shows nystagmus; convergence preserved</td>
+</tr>
+<tr class="even">
+<td>One-and-a-half syndrome</td>
+<td>Abducens nucleus + ipsilateral MLF: only the contralateral eye can abduct</td>
+</tr>
+<tr class="odd">
+<td>Frontal eye field</td>
+<td>Eyes deviate toward a destructive lesion, away from a seizure focus</td>
+</tr>
+</tbody>
+</table></div>
+<p>Vertical gaze is controlled from the rostral midbrain (dorsal midbrain syndrome: upgaze palsy, light-near dissociation).</p>
+<h3 id="the-pupil">The pupil</h3>
+<p>The light reflex runs from the retina via CN II to the pretectal nuclei, then to both Edinger-Westphal nuclei, then out with CN III (parasympathetic) to the ciliary ganglion. Because each pretectal nucleus projects bilaterally, a light in one eye normally constricts both pupils.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Finding</th>
+<th>Lesion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Light in the affected eye gives weak constriction of both; light in the other eye constricts both (relative afferent defect)</td>
+<td>Afferent limb, CN II on that side</td>
+</tr>
+<tr class="even">
+<td>One pupil never constricts whichever eye is lit</td>
+<td>Efferent limb, CN III on that side</td>
+</tr>
+<tr class="odd">
+<td>Dilated, sluggish pupil with ptosis, eye down and out</td>
+<td>CN III compression (aneurysm, uncal herniation)</td>
+</tr>
+<tr class="even">
+<td>Small pupil, mild ptosis, facial anhidrosis</td>
+<td>Sympathetic pathway (Horner)</td>
+</tr>
+<tr class="odd">
+<td>Pupils constrict to near but not light</td>
+<td>Argyll Robertson or dorsal midbrain lesion</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The sympathetic pathway to the eye</strong> runs from the hypothalamus down the lateral brainstem to the lateral horn at T1, out to the sympathetic chain and superior cervical ganglion, then along the carotid artery. Damage anywhere gives Horner syndrome: ptosis, miosis and reduced sweating with flushing on the same side of the face. Clinical clues to the level: a lateral brainstem stroke (with crossed sensory loss), an apical lung tumor (with arm pain), or carotid dissection (with neck pain).</p>
+<blockquote>
+<p><strong>Same concept from different angles.</strong> Eye movement control appears several times on this exam, in the brainstem, MS and stroke items. Be able to predict which eye movements fail, and which are spared, for lesions of the nerves, the nuclei and the pathway that links them.</p>
+</blockquote>
+<h3 id="high-yield-clues-3" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>A pupil light test:</strong> shine the light in each eye in turn and ask which pupil fails, and when. That separates the afferent limb from the efferent limb.</li>
+<li><strong>Facial signs on one side and body signs on the other:</strong> the cranial nerve sets the level; long-tract signs tell you medial or lateral.</li>
+<li><strong>Hoarseness, trouble swallowing, vertigo and a small pupil after a stroke:</strong> name the structure behind each sign and the artery that supplies them.</li>
+<li><strong>An eye that cannot adduct on side gaze but converges normally:</strong> localize to the pathway linking the two eyes, and predict which movements fail and which are spared.</li>
+<li><strong>A third nerve palsy with weakness of the opposite body:</strong> place the lesion by level and work out the vessel.</li>
+<li><strong>A small pupil with drooping eyelid:</strong> find the level of the sympathetic lesion from the signs that come with it (brainstem, lung apex, neck).</li>
+<li><strong>Vertical double vision that is worst going downstairs:</strong> use the head-tilt test to name the nerve and side.</li>
+<li><strong>Several cranial nerves out together with no long-tract signs:</strong> think about where those nerves travel side by side through the skull.</li>
+</ul>
+<h2 id="s5">5. Stroke, vascular territories and hemorrhage (7 questions)</h2>
+<p>These items give a deficit, a history or an image and ask which vessel, which kind of bleed, or what will happen next. Match the deficit to the territory first, then use the time course and imaging to name the process.</p>
+<h3 id="vascular-territories">Vascular territories</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Vessel</th>
+<th>Territory</th>
+<th>Classic deficit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ACA</td>
+<td>Medial frontal and parietal lobes</td>
+<td>Contralateral leg weakness and sensory loss, abulia, incontinence</td>
+</tr>
+<tr class="even">
+<td>MCA superior division</td>
+<td>Lateral frontal lobe</td>
+<td>Contralateral face and arm weakness; expressive aphasia if dominant</td>
+</tr>
+<tr class="odd">
+<td>MCA inferior division</td>
+<td>Lateral temporal and parietal lobes</td>
+<td>Receptive aphasia (dominant) or neglect (non-dominant); contralateral upper quadrantanopia</td>
+</tr>
+<tr class="even">
+<td>Lenticulostriate (MCA deep branches)</td>
+<td>Internal capsule, basal ganglia</td>
+<td>Pure motor or pure sensory lacunes; hypertensive bleeds</td>
+</tr>
+<tr class="odd">
+<td>PCA</td>
+<td>Occipital lobe, medial temporal lobe, thalamus; proximal branches to the midbrain</td>
+<td>Contralateral homonymous hemianopia with macular sparing; memory loss; midbrain signs if proximal</td>
+</tr>
+<tr class="even">
+<td>Basilar</td>
+<td>Pons, midbrain</td>
+<td>Locked-in syndrome, coma, crossed signs</td>
+</tr>
+<tr class="odd">
+<td>AICA, PICA, SCA</td>
+<td>Lateral pons, lateral medulla, superior cerebellum</td>
+<td>Lateral brainstem syndromes with ipsilateral ataxia</td>
+</tr>
+<tr class="even">
+<td>Watershed zones</td>
+<td>Border zones between ACA, MCA and PCA</td>
+<td>Proximal arm and leg weakness ("man in a barrel"); follows profound hypotension</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="ischemia-tia-stroke-subtypes-and-prevention">Ischemia: TIA, stroke subtypes and prevention</h3>
+<ul>
+<li><strong>Transient ischemic attack</strong> is a focal deficit from ischemia with no infarct on imaging, usually lasting minutes to an hour. Treat it as a warning: the stroke risk is highest in the next days.</li>
+<li><strong>Subtypes</strong> (TOAST): large-artery atherosclerosis, cardioembolism (atrial fibrillation), small-vessel lacunes, other determined cause, cryptogenic.</li>
+<li><strong>Secondary prevention depends on the mechanism.</strong> Cardioembolic stroke from atrial fibrillation needs anticoagulation (warfarin or a direct oral anticoagulant). Atherosclerotic and lacunar strokes get antiplatelet therapy (aspirin, clopidogrel, aspirin plus dipyridamole), statins and blood pressure control.</li>
+<li><strong>Infarct age on MRI.</strong> DWI is bright within minutes and fades over weeks; an old infarct appears as a dark cavity on T1 with tissue loss.</li>
+</ul>
+<h3 id="hemorrhage">Hemorrhage</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Bleed</th>
+<th>Typical cause</th>
+<th>CT appearance</th>
+<th>Clinical course</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Epidural</td>
+<td>Temporal bone fracture tearing the middle meningeal artery</td>
+<td>Lens-shaped (biconvex), does not cross sutures</td>
+<td>Brief loss of consciousness, lucid interval, rapid decline</td>
+</tr>
+<tr class="even">
+<td>Subdural</td>
+<td>Tearing of bridging veins; older adults, anticoagulation, alcohol, falls</td>
+<td>Crescent-shaped, crosses sutures; dark (hypodense) when chronic</td>
+<td>Gradual confusion, headache, mild focal signs</td>
+</tr>
+<tr class="odd">
+<td>Subarachnoid</td>
+<td>Ruptured berry aneurysm (Circle of Willis, often ACom or PCom)</td>
+<td>Blood in sulci and cisterns</td>
+<td>"Worst headache of my life", neck stiffness; risk of vasospasm and hydrocephalus</td>
+</tr>
+<tr class="even">
+<td>Intraparenchymal</td>
+<td>Hypertension (basal ganglia, thalamus, pons, cerebellum), amyloid angiopathy (lobar), anticoagulation</td>
+<td>Bright mass within brain tissue</td>
+<td>Sudden headache, vomiting and focal deficit that worsens over minutes to hours</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Acute management of a bleed.</strong> Reverse anticoagulation quickly to limit hematoma growth: for warfarin, vitamin K plus prothrombin complex concentrate or fresh frozen plasma. Control very high blood pressure. Steroids are for tumor edema, not hemorrhage.</p>
+<h3 id="herniation">Herniation</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>What moves</th>
+<th>Signs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Subfalcine</td>
+<td>Cingulate gyrus under the falx</td>
+<td>Can compress the ACA (leg weakness)</td>
+</tr>
+<tr class="even">
+<td>Uncal (transtentorial)</td>
+<td>Medial temporal lobe over the tentorium</td>
+<td>Ipsilateral dilated pupil (CN III), hemiparesis, coma; contralateral peduncle compression can give a false localizing sign</td>
+</tr>
+<tr class="odd">
+<td>Central</td>
+<td>Diencephalon and midbrain downward</td>
+<td>Decreasing consciousness, small then fixed pupils, posturing</td>
+</tr>
+<tr class="even">
+<td>Tonsillar</td>
+<td>Cerebellar tonsils through the foramen magnum</td>
+<td>Medullary compression: respiratory and cardiac arrest</td>
+</tr>
+</tbody>
+</table></div>
+<p>An expanding supratentorial mass tends to progress from uncal or central herniation to tonsillar herniation and death if not decompressed.</p>
+<blockquote>
+<p><strong>Same concept from different angles.</strong> The posterior cerebral artery appears in several forms: as a visual field deficit, on MRI, and through its proximal branches to the midbrain. Know its whole territory, not just the occipital lobe.</p>
+</blockquote>
+<h3 id="high-yield-clues-4" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>Vision loss on one side with no weakness:</strong> think about the posterior circulation, and look for midbrain signs that mean a more proximal occlusion.</li>
+<li><strong>Leg weaker than arm, or arm and face weaker than leg:</strong> use the homunculus to pick the territory.</li>
+<li><strong>A stroke after a long period of low blood pressure:</strong> think about the border zones between territories.</li>
+<li><strong>Gradual confusion in an older adult on anticoagulants:</strong> read the CT shape and work out which vessels tear.</li>
+<li><strong>A head injury with a lucid interval:</strong> know the bleed, its source and what happens next if it is not drained.</li>
+<li><strong>A deficit that fully resolves with normal imaging:</strong> name it and know the short-term stroke risk.</li>
+<li><strong>A thunderclap headache with a normal CT:</strong> know what comes next and why timing matters.</li>
+<li><strong>A spontaneous bleed:</strong> use its location (deep or lobar) and the patient's age to choose the cause.</li>
+<li><strong>A bleed in a patient on warfarin:</strong> know how to reverse it and which factors are involved.</li>
+</ul>
+<h2 id="s6">6. Cortex, limbic system, hypothalamus and sleep (6 questions)</h2>
+<p>These items link a behavior to a structure: a language or attention problem to a cortical region, a memory problem to a circuit, a temperature or sleep problem to a hypothalamic nucleus.</p>
+<h3 id="cortical-syndromes">Cortical syndromes</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Region (dominant unless noted)</th>
+<th>Deficit when damaged</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inferior frontal gyrus (Broca area)</td>
+<td>Non-fluent, effortful speech with good comprehension; often right face and arm weakness from nearby motor cortex</td>
+</tr>
+<tr class="even">
+<td>Posterior superior temporal gyrus (Wernicke area)</td>
+<td>Fluent but empty speech, poor comprehension and repetition</td>
+</tr>
+<tr class="odd">
+<td>Arcuate fasciculus</td>
+<td>Conduction aphasia: poor repetition with fluent speech and good comprehension</td>
+</tr>
+<tr class="even">
+<td>Watershed around language areas</td>
+<td>Transcortical aphasias: repetition preserved</td>
+</tr>
+<tr class="odd">
+<td>Angular gyrus</td>
+<td>Gerstmann syndrome: agraphia, acalculia, finger agnosia, left-right confusion</td>
+</tr>
+<tr class="even">
+<td>Non-dominant parietal lobe</td>
+<td>Hemispatial neglect of the left side, anosognosia, dressing apraxia, constructional problems (crowded clock drawing)</td>
+</tr>
+<tr class="odd">
+<td>Prefrontal / orbitofrontal</td>
+<td>Disinhibition, poor judgment, apathy, executive dysfunction</td>
+</tr>
+<tr class="even">
+<td>Premotor and supplementary motor areas</td>
+<td>Apraxia, motor planning problems</td>
+</tr>
+<tr class="odd">
+<td>Primary visual cortex</td>
+<td>Contralateral homonymous hemianopia</td>
+</tr>
+<tr class="even">
+<td>Inferior temporal cortex</td>
+<td>Visual agnosia, prosopagnosia (fusiform gyrus)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="memory-circuitry">Memory circuitry</h3>
+<p>New declarative memories depend on the hippocampus and its circuit: entorhinal cortex → hippocampus → fornix → mammillary bodies → mammillothalamic tract → anterior thalamus → cingulate gyrus → back to the entorhinal cortex (Papez circuit). Damage anywhere along it causes anterograde amnesia with relatively preserved older memories.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Structure</th>
+<th>Role or lesion effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hippocampus</td>
+<td>Consolidation of new declarative memory; affected early in Alzheimer disease and by hypoxia</td>
+</tr>
+<tr class="even">
+<td>Entorhinal cortex</td>
+<td>Main gateway into the hippocampus</td>
+</tr>
+<tr class="odd">
+<td>Fornix</td>
+<td>Main output tract of the hippocampus to the mammillary bodies and septal nuclei</td>
+</tr>
+<tr class="even">
+<td>Mammillary bodies, mediodorsal thalamus</td>
+<td>Damaged in thiamine deficiency (Wernicke-Korsakoff): amnesia with confabulation</td>
+</tr>
+<tr class="odd">
+<td>Amygdala</td>
+<td>Fear, emotional memory; bilateral lesions give Klüver-Bucy syndrome</td>
+</tr>
+<tr class="even">
+<td>Basal forebrain (nucleus basalis)</td>
+<td>Cholinergic input to cortex; lost in Alzheimer disease</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Wernicke-Korsakoff syndrome.</strong> Wernicke encephalopathy is the acute triad of confusion, ophthalmoplegia (with nystagmus) and ataxia. Give thiamine before glucose. Korsakoff syndrome is the chronic amnesic state that can follow, with confabulation.</p>
+<h3 id="hypothalamus">Hypothalamus</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Nucleus or area</th>
+<th>Function</th>
+<th>Lesion effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Preoptic and anterior hypothalamus</td>
+<td>Heat loss (sweating, vasodilation); sleep promotion (VLPO)</td>
+<td>Hyperthermia; insomnia</td>
+</tr>
+<tr class="even">
+<td>Posterior hypothalamus</td>
+<td>Heat conservation and production</td>
+<td>Hypothermia (poikilothermia)</td>
+</tr>
+<tr class="odd">
+<td>Lateral hypothalamus</td>
+<td>Hunger; orexin (hypocretin) neurons that stabilize wakefulness</td>
+<td>Anorexia; narcolepsy if orexin neurons are lost</td>
+</tr>
+<tr class="even">
+<td>Ventromedial nucleus</td>
+<td>Satiety</td>
+<td>Hyperphagia, obesity</td>
+</tr>
+<tr class="odd">
+<td>Suprachiasmatic nucleus</td>
+<td>Circadian clock, entrained by light via the retinohypothalamic tract</td>
+<td>Loss of daily rhythms</td>
+</tr>
+<tr class="even">
+<td>Supraoptic and paraventricular</td>
+<td>ADH and oxytocin</td>
+<td>Central diabetes insipidus</td>
+</tr>
+<tr class="odd">
+<td>Arcuate</td>
+<td>Releasing hormones, dopamine to inhibit prolactin</td>
+<td>Pituitary hormone changes</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="sleep-disorders">Sleep disorders</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Disorder</th>
+<th>Mechanism</th>
+<th>Clues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Narcolepsy type 1</td>
+<td>Loss of orexin (hypocretin) neurons in the lateral hypothalamus</td>
+<td>Daytime sleepiness, cataplexy, hypnagogic hallucinations, sleep paralysis; low CSF hypocretin; short sleep latency with sleep-onset REM</td>
+</tr>
+<tr class="even">
+<td>REM sleep behavior disorder</td>
+<td>Loss of REM atonia (brainstem)</td>
+<td>Acting out dreams; often precedes Parkinson disease, Lewy body dementia or MSA</td>
+</tr>
+<tr class="odd">
+<td>Obstructive sleep apnea</td>
+<td>Airway collapse during sleep</td>
+<td>Snoring, obesity, morning headache, daytime sleepiness</td>
+</tr>
+<tr class="even">
+<td>Circadian rhythm disorders</td>
+<td>Mistimed SCN clock</td>
+<td>Delayed or advanced sleep phase, shift work</td>
+</tr>
+<tr class="odd">
+<td>Restless legs syndrome</td>
+<td>Dopaminergic and iron-related</td>
+<td>Urge to move legs at rest in the evening, relieved by movement</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="high-yield-clues-5" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>A patient who ignores one side and denies being weak:</strong> know which hemisphere and which lobe.</li>
+<li><strong>New memories will not stick:</strong> follow the memory circuit from the hippocampus to the thalamus and decide which link is broken; the history (alcohol, a slowly progressive disease, a white matter lesion) points to the site.</li>
+<li><strong>Body temperature too high or too low after a brain injury:</strong> know which part of the hypothalamus loses heat and which conserves it.</li>
+<li><strong>Sleep attacks plus sudden weakness with laughter:</strong> know the neurons that are lost and where they live.</li>
+<li><strong>Disturbed language:</strong> check fluency, comprehension and repetition in that order to name the aphasia and its site.</li>
+<li><strong>Dream enactment in an older adult:</strong> know which later diseases it predicts.</li>
+<li><strong>Writing, arithmetic, finger naming and left-right problems together:</strong> place the lesion in the dominant parietal lobe.</li>
+<li><strong>Hyperorality, placidity and disinhibition after encephalitis:</strong> name the structure damaged on both sides.</li>
+</ul>
+<h2 id="s7">7. Movement disorders, cerebellum and dementia (6 questions)</h2>
+<p>These items ask you to name a movement disorder or dementia from its pattern, place it in the circuit, and predict its course. Age of onset, the first symptom and family history do most of the work.</p>
+<h3 id="basal-ganglia-circuit-in-one-paragraph">Basal ganglia circuit in one paragraph</h3>
+<p>Dopamine from the substantia nigra pars compacta travels along nigrostriatal axons to terminals in the striatum (caudate and putamen). There it excites the direct pathway (D1, which releases movement) and inhibits the indirect pathway (D2, which brakes movement). Too little dopamine means too much braking: parkinsonism. Loss of striatal medium spiny neurons in the indirect pathway, or damage to the subthalamic nucleus, removes the brake: chorea or ballism.</p>
+<h3 id="movement-disorders">Movement disorders</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Disorder</th>
+<th>Pattern</th>
+<th>Pathology or cause</th>
+<th>Treatment highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parkinson disease</td>
+<td>Resting tremor, rigidity, bradykinesia, postural instability; later cognitive decline and hallucinations</td>
+<td>Loss of nigral dopaminergic neurons; Lewy bodies (alpha-synuclein)</td>
+<td>Levodopa/carbidopa, dopamine agonists, MAO-B and COMT inhibitors</td>
+</tr>
+<tr class="even">
+<td>Toxin-induced parkinsonism (MPTP)</td>
+<td>Abrupt, severe parkinsonism after illicit drug use</td>
+<td>MPP+ taken up by dopaminergic neurons, destroying the nigrostriatal pathway</td>
+<td>Responds to levodopa</td>
+</tr>
+<tr class="odd">
+<td>Huntington disease</td>
+<td>Chorea, motor impersistence ("milkmaid grip"), behavioral and psychiatric change, weight loss, dementia; onset 30s–50s</td>
+<td>Autosomal dominant CAG repeat; caudate atrophy, loss of medium spiny neurons</td>
+<td>VMAT2 inhibitors (tetrabenazine, deutetrabenazine); antipsychotics</td>
+</tr>
+<tr class="even">
+<td>Hemiballismus</td>
+<td>Violent flinging of one side</td>
+<td>Contralateral subthalamic nucleus (lacunar stroke)</td>
+<td>Often improves; antipsychotics</td>
+</tr>
+<tr class="odd">
+<td>Wilson disease</td>
+<td>Tremor, dystonia, dysarthria, psychiatric symptoms, liver disease, Kayser-Fleischer rings; young onset</td>
+<td>ATP7B mutation: copper cannot be excreted into bile, spills into blood and deposits in brain (basal ganglia), causing oxidative injury</td>
+<td>Chelation (penicillamine, trientine), zinc, transplant</td>
+</tr>
+<tr class="even">
+<td>Essential tremor</td>
+<td>Action and postural tremor, improves with alcohol, often familial</td>
+<td></td>
+<td>Propranolol, primidone</td>
+</tr>
+<tr class="odd">
+<td>Tics / Tourette</td>
+<td>Brief, stereotyped, suppressible movements or sounds with a premonitory urge</td>
+<td></td>
+<td>Behavioral therapy, alpha-2 agonists</td>
+</tr>
+<tr class="even">
+<td>Myoclonus</td>
+<td>Sudden, shock-like jerks</td>
+<td>Many causes, including epilepsy syndromes</td>
+<td>Depends on cause</td>
+</tr>
+<tr class="odd">
+<td>Restless legs</td>
+<td>Urge to move at rest, evening</td>
+<td>Iron deficiency, dopamine</td>
+<td>Iron, dopamine agonists, gabapentinoids</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="cerebellum">Cerebellum</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Region</th>
+<th>Lesion signs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vermis (midline)</td>
+<td>Truncal and gait ataxia, wide-based gait; the anterior vermis degenerates with chronic alcohol use (Purkinje cell loss)</td>
+</tr>
+<tr class="even">
+<td>Hemispheres</td>
+<td>Ipsilateral limb dysmetria, intention tremor, dysdiadochokinesia</td>
+</tr>
+<tr class="odd">
+<td>Flocculonodular lobe</td>
+<td>Nystagmus, disordered smooth pursuit, imbalance</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cerebellar signs are ipsilateral to the lesion. Sensory ataxia (dorsal columns) worsens with eyes closed; cerebellar ataxia does not depend much on vision.</p>
+<h3 id="dementias-age-and-first-symptom-distinguish-them">Dementias: age and first symptom distinguish them</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Dementia</th>
+<th>Typical onset</th>
+<th>First and defining features</th>
+<th>Course and pathology</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Alzheimer disease</td>
+<td>&gt; 65 (early-onset forms exist)</td>
+<td>Episodic memory loss for recent events, word-finding trouble, getting lost</td>
+<td>Slow progression over about a decade; long-term memory lost late; amyloid plaques and tau tangles; hippocampal atrophy</td>
+</tr>
+<tr class="even">
+<td>Behavioral variant frontotemporal dementia</td>
+<td>45–65</td>
+<td>Disinhibition, apathy, loss of empathy, compulsions, hyperorality, poor insight; memory relatively preserved early</td>
+<td>Frontal and temporal atrophy; strong family history, some genes shared with ALS</td>
+</tr>
+<tr class="odd">
+<td>Dementia with Lewy bodies</td>
+<td>60s–70s</td>
+<td>Fluctuating cognition, early visual hallucinations, parkinsonism, REM sleep behavior disorder</td>
+<td>Cortical Lewy bodies; severe antipsychotic sensitivity</td>
+</tr>
+<tr class="even">
+<td>Vascular dementia</td>
+<td>Any older age</td>
+<td>Stepwise decline, focal signs, executive slowing</td>
+<td>Infarcts and white matter disease</td>
+</tr>
+<tr class="odd">
+<td>Creutzfeldt-Jakob disease</td>
+<td>Any</td>
+<td>Rapid decline over months, startle myoclonus</td>
+<td>Spongiform change; death within about a year</td>
+</tr>
+<tr class="even">
+<td>Normal pressure hydrocephalus</td>
+<td>Older adults</td>
+<td>Gait apraxia, incontinence, then cognition</td>
+<td>Enlarged ventricles; may improve with shunting</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Same concept from different angles.</strong> One movement disorder can be asked as a diagnosis or as a drug question. Be ready to go from the pattern to the name, and from the name to the pathophysiology and treatment.</p>
+</blockquote>
+<h3 id="high-yield-clues-6" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>Irritability and weight loss with new involuntary movements in midlife:</strong> know both the diagnosis and the drug class that treats the movements; similar stems can ask either.</li>
+<li><strong>A heavy drinker with an unsteady, wide-based walk but normal hand coordination:</strong> localize to the midline cerebellum and name the cells lost.</li>
+<li><strong>Parkinsonism after an illicit drug:</strong> trace the nigrostriatal pathway from cell bodies to terminals.</li>
+<li><strong>Personality change, poor judgment and compulsive eating in midlife:</strong> know which cognitive abilities are lost early and which are relatively preserved.</li>
+<li><strong>A slowly progressive memory disorder:</strong> know the order in which abilities are lost and the usual time course.</li>
+<li><strong>A young patient with movement problems, psychiatric change and liver disease:</strong> know the metal involved and how it injures the brain.</li>
+<li><strong>Visual hallucinations, fluctuating alertness and parkinsonism:</strong> know which drug class to avoid.</li>
+<li><strong>Dementia over months with startle jerks:</strong> think about the speed of decline before the type of dementia.</li>
+<li><strong>A tremor:</strong> decide whether it is at rest, with posture or action, or at the end of a reach.</li>
+</ul>
+<h2 id="s8">8. Seizures and headache (5 questions)</h2>
+<p>These items ask you to classify a seizure, localize where it started, choose the test that confirms it, or name a headache from its pattern.</p>
+<h3 id="seizure-classification-and-localization">Seizure classification and localization</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Seizure type</th>
+<th>What you see</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Focal aware</td>
+<td>Motor, sensory or autonomic symptoms with awareness kept</td>
+<td>Shows where the focus is (e.g., a rising epigastric feeling suggests mesial temporal)</td>
+</tr>
+<tr class="even">
+<td>Focal impaired awareness</td>
+<td>Staring, automatisms (lip smacking, picking at clothes), confusion afterward</td>
+<td>Usually temporal or frontal; lasts 1–2 minutes</td>
+</tr>
+<tr class="odd">
+<td>Focal to bilateral tonic-clonic</td>
+<td>Starts in one region, then spreads to both sides</td>
+<td>The first sign localizes the focus</td>
+</tr>
+<tr class="even">
+<td>Jacksonian march</td>
+<td>Motor activity spreading along the homunculus (hand → arm → face)</td>
+<td>A focal motor seizure</td>
+</tr>
+<tr class="odd">
+<td>Absence</td>
+<td>Seconds-long staring spells, many per day, no postictal state</td>
+<td>Children; 3 Hz generalized spike-and-wave on EEG; can be triggered by hyperventilation</td>
+</tr>
+<tr class="even">
+<td>Myoclonic</td>
+<td>Brief, shock-like jerks, often on waking</td>
+<td>Juvenile myoclonic epilepsy: teens, morning jerks, generalized tonic-clonic seizures, sleep deprivation triggers</td>
+</tr>
+<tr class="odd">
+<td>Generalized tonic-clonic</td>
+<td>Stiffening then rhythmic jerking, postictal confusion</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Atonic</td>
+<td>Sudden loss of tone, drop attacks</td>
+<td>Lennox-Gastaut</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Localizing clues.</strong> Head and eye deviation is driven by the frontal eye field and turns away from the seizing hemisphere. Postictal weakness (Todd paralysis) is on the side opposite the focus. A rising epigastric sensation, déjà vu or fear suggests mesial temporal onset. Frontal lobe seizures are brief, frequent, often from sleep, with bizarre motor activity.</p>
+<p><strong>Testing.</strong> EEG captures interictal discharges and classifies the epilepsy. MRI looks for a structural cause (hippocampal sclerosis, tumor, cortical malformation). Genetic testing is for suspected genetic syndromes, not typical absence epilepsy.</p>
+<h3 id="headache">Headache</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Headache</th>
+<th>Pattern</th>
+<th>Associated features</th>
+<th>Acute treatment</th>
+<th>Prevention</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Migraine</td>
+<td>Unilateral, throbbing, 4–72 hours</td>
+<td>Nausea, photophobia, phonophobia, aura; worse with activity</td>
+<td>Triptans, NSAIDs, antiemetics</td>
+<td>Beta-blockers, topiramate, amitriptyline, CGRP antagonists</td>
+</tr>
+<tr class="even">
+<td>Tension-type</td>
+<td>Bilateral, pressing, band-like</td>
+<td>Few associated features</td>
+<td>Simple analgesics</td>
+<td>Amitriptyline</td>
+</tr>
+<tr class="odd">
+<td>Cluster</td>
+<td>Unilateral orbital, severe, 15–180 minutes, often at the same time at night; bouts of weeks then remission</td>
+<td>Ipsilateral tearing, red eye, nasal congestion, Horner; restless during attacks; men</td>
+<td>High-flow oxygen, triptans</td>
+<td>Verapamil</td>
+</tr>
+<tr class="even">
+<td>Medication-overuse</td>
+<td>Daily or near-daily, often worse in the morning</td>
+<td>Regular use of analgesics, triptans or opioids on ≥ 10–15 days a month</td>
+<td>Withdraw the overused drug</td>
+<td>Start a true preventive</td>
+</tr>
+<tr class="odd">
+<td>Trigeminal neuralgia</td>
+<td>Seconds-long electric jabs in V2/V3</td>
+<td>Triggered by touch, chewing</td>
+<td>Carbamazepine</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Idiopathic intracranial hypertension</td>
+<td>Daily, worse lying down</td>
+<td>Young obese women, papilledema, transient visual obscurations, CN VI palsy</td>
+<td>Weight loss, acetazolamide</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Red flags for secondary headache (SNOOP):</strong> systemic symptoms, neurologic signs, sudden (thunderclap) onset, older age at onset, change in pattern or positional, papilledema.</p>
+<blockquote>
+<p><strong>Same concept from different angles.</strong> A primary headache with autonomic features can be asked as a diagnosis or as a treatment. Learn the timing and the autonomic signs so you can recognize it either way.</p>
+</blockquote>
+<h3 id="high-yield-clues-7" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>A seizure that starts with the head and eyes turning to one side:</strong> know which hemisphere and lobe it comes from.</li>
+<li><strong>Many brief staring spells a day in a child:</strong> know which test confirms the type and what it shows.</li>
+<li><strong>Jerks on waking in a teenager:</strong> name the seizure type and the syndrome it belongs to.</li>
+<li><strong>Severe one-sided pain around the eye with tearing and a runny nose, at the same hour each night:</strong> know the diagnosis, the acute treatment and the preventive.</li>
+<li><strong>A daily headache in someone taking pain relievers most days:</strong> think about the treatment as the cause.</li>
+<li><strong>Headache that is worse lying down, with papilledema:</strong> decide what to image before doing a lumbar puncture.</li>
+<li><strong>Visual symptoms before a headache:</strong> decide whether they spread over minutes (aura) or arrive all at once (ischemia).</li>
+<li><strong>Frequent, waxing and waning episodes with eyes shut that do not respond to drugs:</strong> know the test that separates epileptic from functional seizures.</li>
+</ul>
+<h2 id="s9">9. Ventricles, development, imaging and tumors on imaging (5 questions)</h2>
+<p>These items test anatomical relationships you can picture: where CSF flows and where it gets blocked, what borders each ventricle, how the neural tube closes, and which scan answers which question.</p>
+<h3 id="csf-flow-and-where-it-blocks">CSF flow and where it blocks</h3>
+<p>CSF is made by choroid plexus in all the ventricles and flows: lateral ventricles → interventricular foramina (of Monro) → third ventricle → cerebral aqueduct → fourth ventricle → median and lateral apertures → subarachnoid space → arachnoid granulations into the venous sinuses. Every space upstream of a block dilates; everything downstream stays normal.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Site of obstruction</th>
+<th>Lateral ventricles</th>
+<th>Third ventricle</th>
+<th>Fourth ventricle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One interventricular foramen</td>
+<td>One dilated</td>
+<td>Normal</td>
+<td>Normal</td>
+</tr>
+<tr class="even">
+<td>Both interventricular foramina (e.g., colloid cyst)</td>
+<td>Both dilated</td>
+<td>Normal</td>
+<td>Normal</td>
+</tr>
+<tr class="odd">
+<td>Cerebral aqueduct</td>
+<td>Both dilated</td>
+<td>Dilated</td>
+<td>Normal</td>
+</tr>
+<tr class="even">
+<td>Fourth ventricle outlets (e.g., Dandy-Walker)</td>
+<td>Dilated</td>
+<td>Dilated</td>
+<td>Dilated</td>
+</tr>
+<tr class="odd">
+<td>Arachnoid granulations (communicating; after meningitis or SAH)</td>
+<td>Dilated</td>
+<td>Dilated</td>
+<td>Dilated, with widened subarachnoid spaces</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="what-borders-each-ventricle">What borders each ventricle</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Part of the ventricular system</th>
+<th>Neighbors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frontal horn and body of lateral ventricle</td>
+<td>Caudate head and body laterally; corpus callosum in the roof; septum pellucidum medially; thalamus in the floor of the body</td>
+</tr>
+<tr class="even">
+<td>Temporal (inferior) horn</td>
+<td>Hippocampus in the floor and medial wall; tail of caudate in the roof</td>
+</tr>
+<tr class="odd">
+<td>Occipital horn</td>
+<td>Calcarine sulcus forms the calcar avis on the medial wall</td>
+</tr>
+<tr class="even">
+<td>Third ventricle</td>
+<td>Thalamus and hypothalamus in the walls</td>
+</tr>
+<tr class="odd">
+<td>Fourth ventricle</td>
+<td>Pons and medulla in the floor; cerebellum in the roof</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="development">Development</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Event</th>
+<th>Timing</th>
+<th>Failure gives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rostral (cranial) neuropore closes</td>
+<td>About day 25 (week 4)</td>
+<td>Anencephaly</td>
+</tr>
+<tr class="even">
+<td>Caudal neuropore closes</td>
+<td>About day 27–28 (week 4)</td>
+<td>Spina bifida (occulta, meningocele, myelomeningocele)</td>
+</tr>
+<tr class="odd">
+<td>Prosencephalon divides into two hemispheres</td>
+<td>Weeks 5–6</td>
+<td>Holoprosencephaly (sonic hedgehog)</td>
+</tr>
+<tr class="even">
+<td>Neural crest migrates</td>
+<td>Week 4 onward</td>
+<td>Peripheral nervous system defects (e.g., Hirschsprung)</td>
+</tr>
+<tr class="odd">
+<td>Neuroblast migration to cortex</td>
+<td>Months 2–5</td>
+<td>Lissencephaly, heterotopias</td>
+</tr>
+<tr class="even">
+<td>Posterior fossa development</td>
+<td></td>
+<td>Chiari malformations, Dandy-Walker</td>
+</tr>
+</tbody>
+</table></div>
+<p>Neural tube defect risk rises with low maternal folate and with some antiseizure drugs (valproate, carbamazepine). Elevated alpha-fetoprotein in maternal serum or amniotic fluid suggests an open defect. Folic acid before conception lowers the risk.</p>
+<h3 id="imaging-which-scan-for-which-question">Imaging: which scan for which question</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Best first study</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Acute bleed or skull fracture</td>
+<td>CT without contrast</td>
+<td>Fast; fresh blood and bone are bright</td>
+</tr>
+<tr class="even">
+<td>Acute ischemic stroke (minutes to hours)</td>
+<td>MRI DWI (CT first to exclude bleed)</td>
+<td>DWI is bright within minutes</td>
+</tr>
+<tr class="odd">
+<td>Blood-brain barrier breakdown (tumor, abscess, active MS plaque)</td>
+<td>MRI T1 with gadolinium</td>
+<td>Contrast leaks where the barrier is disrupted</td>
+</tr>
+<tr class="even">
+<td>Edema, white matter disease</td>
+<td>MRI T2 / FLAIR</td>
+<td>Water is bright</td>
+</tr>
+<tr class="odd">
+<td>Vessels (stenosis, aneurysm, occlusion)</td>
+<td>CT or MR angiography</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Dementia type (metabolic pattern)</td>
+<td>FDG-PET</td>
+<td>Shows regional hypometabolism</td>
+</tr>
+<tr class="odd">
+<td>Newborn brain</td>
+<td>Cranial ultrasound</td>
+<td>Open fontanelle; no radiation</td>
+</tr>
+</tbody>
+</table></div>
+<p>On CT, bone and acute blood are bright, CSF dark, older blood darker over weeks. On T1 MRI, CSF is dark and fat bright; on T2, CSF is bright.</p>
+<p><strong>Posterior fossa tumors in children.</strong> Medulloblastoma (cerebellar vermis, highly cellular, can seed the CSF to coat the spine as "drop metastases"), pilocytic astrocytoma (cystic with an enhancing nodule, low grade), and ependymoma (fourth ventricle floor, may also spread along CSF). Hemangioblastoma is a posterior fossa tumor of adults, linked to von Hippel-Lindau.</p>
+<h3 id="high-yield-clues-8" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>Hydrocephalus on a scan:</strong> list which ventricles are enlarged and which are normal, then find the narrowest point upstream of the normal ones.</li>
+<li><strong>A mass next to a ventricle:</strong> know what forms each wall, roof and floor of the ventricles.</li>
+<li><strong>A spinal defect at birth:</strong> know which neuropore failed, when it normally closes, and what raises the risk.</li>
+<li><strong>A question about which scan to order:</strong> match the scan to what it shows (blood, early infarct, barrier breakdown, vessels).</li>
+<li><strong>A child with a posterior fossa mass and nodules coating the spinal cord:</strong> think about which tumors spread through the CSF.</li>
+<li><strong>Gait trouble, incontinence and slowed thinking in an older adult:</strong> know the imaging finding and the test that predicts response to treatment.</li>
+</ul>
+<h2 id="s10">10. Neuropathology (6 questions)</h2>
+<p>These items show a gross specimen, a micrograph or an MRI, or give a clinical setting, and ask what it is. Think about the patient's age, immune status, location (intra-axial vs. extra-axial) and family history.</p>
+<h3 id="cns-tumors">CNS tumors</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Tumor</th>
+<th>Who and where</th>
+<th>Imaging and histology</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Glioblastoma</td>
+<td>Older adults; cerebral hemispheres, can cross the corpus callosum ("butterfly")</td>
+<td>Ring enhancement, central necrosis; pseudopalisading necrosis, vascular proliferation; GFAP+</td>
+</tr>
+<tr class="even">
+<td>Diffuse astrocytoma, oligodendroglioma</td>
+<td>Adults; hemispheres</td>
+<td>Infiltrative; oligodendroglioma has "fried egg" cells, calcification, 1p/19q codeletion</td>
+</tr>
+<tr class="odd">
+<td>Meningioma</td>
+<td>Adults, women; dura-based (convexity, parasagittal, olfactory groove)</td>
+<td>Extra-axial, uniformly enhancing, dural tail; whorls and psammoma bodies</td>
+</tr>
+<tr class="even">
+<td>Schwannoma</td>
+<td>Adults; CN VIII at the cerebellopontine angle</td>
+<td>Antoni A and B areas, Verocay bodies; S-100+</td>
+</tr>
+<tr class="odd">
+<td>Primary CNS lymphoma</td>
+<td>Immunosuppressed (AIDS, transplant), also older adults</td>
+<td>Often periventricular, enhancing; EBV-associated in AIDS; B-cell</td>
+</tr>
+<tr class="even">
+<td>Metastases</td>
+<td>Adults; gray-white junction, often multiple</td>
+<td>Lung, breast, melanoma, kidney</td>
+</tr>
+<tr class="odd">
+<td>Pilocytic astrocytoma</td>
+<td>Children; cerebellum</td>
+<td>Cyst with nodule; Rosenthal fibers</td>
+</tr>
+<tr class="even">
+<td>Medulloblastoma</td>
+<td>Children; vermis</td>
+<td>Small round blue cells, Homer Wright rosettes; CSF seeding</td>
+</tr>
+<tr class="odd">
+<td>Ependymoma</td>
+<td>Children (fourth ventricle), adults (spinal cord)</td>
+<td>Perivascular pseudorosettes</td>
+</tr>
+<tr class="even">
+<td>Craniopharyngioma</td>
+<td>Children; suprasellar</td>
+<td>Calcified, cystic; bitemporal hemianopia</td>
+</tr>
+<tr class="odd">
+<td>Hemangioblastoma</td>
+<td>Adults; cerebellum</td>
+<td>Cyst with nodule; von Hippel-Lindau</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="neurocutaneous-syndromes">Neurocutaneous syndromes</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Syndrome</th>
+<th>Gene and chromosome</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Neurofibromatosis type 1</td>
+<td>NF1, chromosome 17 (neurofibromin)</td>
+<td>Café-au-lait spots, neurofibromas, Lisch nodules, optic glioma</td>
+</tr>
+<tr class="even">
+<td>Neurofibromatosis type 2</td>
+<td>NF2, chromosome 22 (merlin)</td>
+<td>Bilateral vestibular schwannomas, meningiomas, ependymomas</td>
+</tr>
+<tr class="odd">
+<td>Tuberous sclerosis</td>
+<td>TSC1 (chromosome 9), TSC2 (chromosome 16)</td>
+<td>Cortical tubers, seizures, ash-leaf spots, angiofibromas, cardiac rhabdomyoma</td>
+</tr>
+<tr class="even">
+<td>Von Hippel-Lindau</td>
+<td>VHL, chromosome 3</td>
+<td>Hemangioblastomas, renal cell carcinoma, pheochromocytoma</td>
+</tr>
+<tr class="odd">
+<td>Sturge-Weber</td>
+<td>GNAQ (somatic)</td>
+<td>Port-wine stain in V1, leptomeningeal angioma, seizures</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="neurodegenerative-inclusions-and-other-gross-findings">Neurodegenerative inclusions and other gross findings</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Finding</th>
+<th>Disease</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lewy bodies (alpha-synuclein) in pigmented nigral neurons</td>
+<td>Parkinson disease; cortical Lewy bodies in dementia with Lewy bodies</td>
+</tr>
+<tr class="even">
+<td>Neurofibrillary tangles (tau) and amyloid plaques</td>
+<td>Alzheimer disease</td>
+</tr>
+<tr class="odd">
+<td>Pick bodies (tau), frontotemporal atrophy</td>
+<td>Frontotemporal dementia</td>
+</tr>
+<tr class="even">
+<td>Spongiform vacuoles</td>
+<td>Prion disease</td>
+</tr>
+<tr class="odd">
+<td>Caudate atrophy with enlarged frontal horns</td>
+<td>Huntington disease</td>
+</tr>
+<tr class="even">
+<td>Saccular (berry) aneurysm at Circle of Willis branch points</td>
+<td>Subarachnoid hemorrhage when it ruptures; polycystic kidney disease, Ehlers-Danlos</td>
+</tr>
+<tr class="odd">
+<td>Charcot-Bouchard microaneurysms</td>
+<td>Hypertensive intraparenchymal hemorrhage</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="histology-of-cns-regions">Histology of CNS regions</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Region</th>
+<th>Layered appearance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cerebral (neo)cortex</td>
+<td>Six layers; pyramidal neurons with apical dendrites toward the surface; Betz cells in layer 5 of motor cortex</td>
+</tr>
+<tr class="even">
+<td>Hippocampus</td>
+<td>Three-layered archicortex; one pyramidal layer (CA fields) plus dentate gyrus granule cells</td>
+</tr>
+<tr class="odd">
+<td>Cerebellar cortex</td>
+<td>Molecular layer, a single row of large Purkinje cells, then a dense granule cell layer</td>
+</tr>
+<tr class="even">
+<td>Spinal cord</td>
+<td>Central butterfly of gray matter with white matter around it</td>
+</tr>
+<tr class="odd">
+<td>Brainstem</td>
+<td>Nuclei scattered among tracts, no layered cortex</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="high-yield-clues-9" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>A brain mass in an immunocompromised patient:</strong> know the most likely tumor and the virus linked to it.</li>
+<li><strong>Bilateral tumors on the same cranial nerve, or several tumor types in one family:</strong> name the syndrome, its gene and its chromosome.</li>
+<li><strong>A gross photo of a vessel at the base of the brain:</strong> know what happens when it ruptures and how it presents.</li>
+<li><strong>Parkinsonism with late hallucinations:</strong> know the inclusion body and the protein in it.</li>
+<li><strong>A dural-based enhancing mass:</strong> recognize it on MRI and know its histology.</li>
+<li><strong>A micrograph of layered cortex:</strong> count the layers and name the large cells to identify the region.</li>
+<li><strong>A ring-enhancing mass crossing the midline:</strong> know its histologic hallmarks.</li>
+<li><strong>A child with a cystic cerebellar mass and a nodule:</strong> separate the tumors by age and histology.</li>
+</ul>
+<h2 id="s11">11. Neuropharmacology (8 questions)</h2>
+<p>These items ask for the drug of choice, how a drug works, or what happens when it is stopped or must be reversed.</p>
+<h3 id="neurotransmitter-synthesis">Neurotransmitter synthesis</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Transmitter</th>
+<th>Precursor and rate-limiting enzyme</th>
+<th>Main sources</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dopamine</td>
+<td>Tyrosine → L-DOPA (tyrosine hydroxylase) → dopamine (DOPA decarboxylase)</td>
+<td>Substantia nigra, ventral tegmental area, arcuate nucleus</td>
+</tr>
+<tr class="even">
+<td>Norepinephrine</td>
+<td>Dopamine → norepinephrine (dopamine-β-hydroxylase, in vesicles)</td>
+<td>Locus coeruleus</td>
+</tr>
+<tr class="odd">
+<td>Epinephrine</td>
+<td>Norepinephrine → epinephrine (PNMT)</td>
+<td>Adrenal medulla</td>
+</tr>
+<tr class="even">
+<td>Serotonin</td>
+<td>Tryptophan → 5-HTP (tryptophan hydroxylase)</td>
+<td>Raphe nuclei</td>
+</tr>
+<tr class="odd">
+<td>Acetylcholine</td>
+<td>Choline + acetyl-CoA (choline acetyltransferase)</td>
+<td>Basal nucleus of Meynert, brainstem, motor neurons</td>
+</tr>
+<tr class="even">
+<td>GABA</td>
+<td>Glutamate (glutamic acid decarboxylase)</td>
+<td>Interneurons, striatum, Purkinje cells</td>
+</tr>
+<tr class="odd">
+<td>Histamine</td>
+<td>Histidine (histidine decarboxylase)</td>
+<td>Tuberomammillary nucleus</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="benzodiazepines">Benzodiazepines</h3>
+<p>Benzodiazepines are positive allosteric modulators of GABA-A receptors (they increase opening frequency). Half-life shapes misuse and withdrawal. Shorter-acting drugs (triazolam, alprazolam, lorazepam, oxazepam, midazolam) work fast and carry more misuse risk; when they are stopped, withdrawal and rebound symptoms come sooner and harder. Longer-acting drugs (diazepam, chlordiazepoxide, clonazepam) leave the body slowly, so they taper themselves and are used to treat alcohol withdrawal. Withdrawal is like alcohol withdrawal: anxiety, tremor, tachycardia, hypertension, sweating, seizures. Flumazenil is the antagonist used in overdose, and it can precipitate seizures in dependent patients.</p>
+<h3 id="antiseizure-drugs">Antiseizure drugs</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Drug</th>
+<th>Best for</th>
+<th>Notable issues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lamotrigine</td>
+<td>Focal and generalized epilepsy; well tolerated cognitively</td>
+<td>Slow titration for Stevens-Johnson risk</td>
+</tr>
+<tr class="even">
+<td>Levetiracetam</td>
+<td>Broad spectrum</td>
+<td>Irritability, depression</td>
+</tr>
+<tr class="odd">
+<td>Valproate</td>
+<td>Generalized epilepsies, including juvenile myoclonic</td>
+<td>Teratogenic (neural tube defects), hepatotoxicity, weight gain</td>
+</tr>
+<tr class="even">
+<td>Ethosuximide</td>
+<td>Absence seizures only</td>
+<td>GI upset</td>
+</tr>
+<tr class="odd">
+<td>Carbamazepine, oxcarbazepine</td>
+<td>Focal seizures, trigeminal neuralgia</td>
+<td>Hyponatremia, enzyme induction, can worsen absence and myoclonic seizures</td>
+</tr>
+<tr class="even">
+<td>Phenytoin</td>
+<td>Focal and tonic-clonic; status epilepticus (fosphenytoin)</td>
+<td>Gingival hyperplasia, hirsutism, nystagmus, ataxia, zero-order kinetics, teratogen</td>
+</tr>
+<tr class="odd">
+<td>Benzodiazepines</td>
+<td>First-line for status epilepticus (lorazepam)</td>
+<td>Sedation and tolerance limit long-term use</td>
+</tr>
+<tr class="even">
+<td>Phenobarbital</td>
+<td>Neonatal seizures, refractory cases</td>
+<td>Sedation and cognitive slowing, especially in older adults</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="stroke-headache-and-neurodegenerative-drugs">Stroke, headache and neurodegenerative drugs</h3>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Drug or class</th>
+<th>Mechanism</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aspirin</td>
+<td>Irreversible COX-1 inhibition (less thromboxane A2)</td>
+<td>Non-cardioembolic stroke prevention</td>
+</tr>
+<tr class="even">
+<td>Clopidogrel</td>
+<td>P2Y12 (ADP receptor) blocker</td>
+<td>Non-cardioembolic stroke prevention</td>
+</tr>
+<tr class="odd">
+<td>Dipyridamole</td>
+<td>Phosphodiesterase inhibitor, raises platelet cAMP</td>
+<td>With aspirin for stroke prevention</td>
+</tr>
+<tr class="even">
+<td>Warfarin</td>
+<td>Blocks vitamin K-dependent factors (II, VII, IX, X)</td>
+<td>Atrial fibrillation; reversed with vitamin K plus PCC or FFP</td>
+</tr>
+<tr class="odd">
+<td>Direct oral anticoagulants</td>
+<td>Factor Xa or thrombin inhibitors</td>
+<td>Atrial fibrillation; specific reversal agents</td>
+</tr>
+<tr class="even">
+<td>Alteplase / tenecteplase</td>
+<td>Plasminogen activators</td>
+<td>Acute ischemic stroke within the time window</td>
+</tr>
+<tr class="odd">
+<td>Triptans</td>
+<td>5-HT1B/1D agonists</td>
+<td>Acute migraine and cluster; avoid with vascular disease</td>
+</tr>
+<tr class="even">
+<td>High-flow oxygen</td>
+<td></td>
+<td>Acute cluster attacks</td>
+</tr>
+<tr class="odd">
+<td>Riluzole</td>
+<td>Reduces glutamate release</td>
+<td>ALS; modest survival benefit</td>
+</tr>
+<tr class="even">
+<td>Edaravone</td>
+<td>Free radical scavenger</td>
+<td>ALS</td>
+</tr>
+<tr class="odd">
+<td>Pyridostigmine</td>
+<td>Acetylcholinesterase inhibitor</td>
+<td>Myasthenia gravis symptoms</td>
+</tr>
+<tr class="even">
+<td>Tetrabenazine, deutetrabenazine</td>
+<td>VMAT2 inhibitors, deplete monoamines</td>
+<td>Huntington chorea, tardive dyskinesia</td>
+</tr>
+<tr class="odd">
+<td>Levodopa/carbidopa</td>
+<td>Dopamine precursor plus peripheral decarboxylase inhibitor</td>
+<td>Parkinson disease</td>
+</tr>
+<tr class="even">
+<td>Pramipexole, ropinirole</td>
+<td>Dopamine agonists</td>
+<td>Parkinson disease, restless legs; impulse control problems</td>
+</tr>
+<tr class="odd">
+<td>Rasagiline, selegiline / entacapone</td>
+<td>MAO-B inhibitors / COMT inhibitor</td>
+<td>Parkinson disease adjuncts</td>
+</tr>
+<tr class="even">
+<td>Donepezil, memantine</td>
+<td>Acetylcholinesterase inhibitor / NMDA antagonist</td>
+<td>Alzheimer disease</td>
+</tr>
+<tr class="odd">
+<td>Dalfampridine</td>
+<td>Potassium channel blocker</td>
+<td>Walking in MS; lowers seizure threshold</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="high-yield-clues-10" class="hy">High-yield clues</h3>
+<ul>
+<li><strong>A toxin or drug that blocks a synthetic enzyme:</strong> know which transmitters each enzyme makes, and which share a pathway.</li>
+<li><strong>Anxiety that rebounds soon after stopping a sedative:</strong> use half-life to pick the drug.</li>
+<li><strong>A bleed on an anticoagulant:</strong> know which factors are affected and how to restore them.</li>
+<li><strong>Stroke prevention:</strong> let the cause of the stroke (heart rhythm vs. artery disease) choose between anticoagulant and antiplatelet, and know each drug's mechanism.</li>
+<li><strong>A progressive motor neuron disease:</strong> know the drug that modestly prolongs survival and how it works.</li>
+<li><strong>Chorea:</strong> know which drug class reduces it and why dopamine-boosting drugs are wrong.</li>
+<li><strong>A new seizure disorder in an older adult:</strong> weigh tolerability and drug interactions when choosing.</li>
+<li><strong>An acute attack of a primary headache:</strong> know which headache type responds to oxygen and which to a triptan.</li>
+<li><strong>A seizure that will not stop:</strong> know the first drug and the order of what follows.</li>
+</ul>
+<h2 id="five-question-formats">Five question formats</h2>
+<p>Every question on this exam fits one of five formats. Knowing which one you are facing tells you what to look for in the stem.</p>
+<div class="tw"><table>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Approximate share</th>
+<th>The stem gives you</th>
+<th>It asks for</th>
+<th>Your reasoning move</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Where is it?</td>
+<td>About 1 in 4</td>
+<td>A deficit, a seizure pattern or an image</td>
+<td>Structure, level, tract or vessel</td>
+<td>Level from the cranial nerve, side from the crossing, vessel from the territory</td>
+</tr>
+<tr class="even">
+<td>2. What is it?</td>
+<td>About 1 in 5</td>
+<td>A patient, image or specimen</td>
+<td>The diagnosis</td>
+<td>Find the one feature that rules out the look-alikes</td>
+</tr>
+<tr class="odd">
+<td>3. What's the next step?</td>
+<td>About 1 in 5</td>
+<td>A diagnosis you must first work out</td>
+<td>A drug, therapy, test or safety step</td>
+<td>Name the condition, then filter options by comorbidity, risk and evidence</td>
+</tr>
+<tr class="even">
+<td>4. What's the mechanism?</td>
+<td>About 1 in 6</td>
+<td>A disease, drug effect or risk</td>
+<td>Pathophysiology, cause or theory</td>
+<td>Explain why, not just what</td>
+</tr>
+<tr class="odd">
+<td>5. Given this, what else is true?</td>
+<td>About 1 in 6</td>
+<td>A diagnosis you must work out</td>
+<td>An associated finding, complication or course</td>
+<td>Name it, then recall what travels with it</td>
+</tr>
+</tbody>
+</table></div>
+<p>Formats 1 and 5 are mirror images: one goes from the findings to the lesion, the other from the lesion to the findings. Many items also include an image, so practice reading CT, MRI, gross specimens and micrographs.</p>
+<h3 id="worked-illustrations-new-scenarios-not-exam-items">Worked illustrations (new scenarios, not exam items)</h3>
+<p><strong>1. Where is it?</strong> A 14-year-old has headaches and cannot look up. His pupils constrict when he focuses on a near object but barely react to light. <em>Reasoning:</em> vertical (upward) gaze and the pretectal light reflex are both organized in the rostral dorsal midbrain, while the near response uses a separate, more ventral route. <em>Answer:</em> the dorsal midbrain at the level of the superior colliculus and pretectum, often compressed by a pineal region tumor.</p>
+<p><strong>2. What is it?</strong> A 34-year-old has had a fixed belief for eight months that a coworker is secretly in love with him. He works full time, his speech is organized and he has no hallucinations or mood episodes. <em>Reasoning:</em> a non-bizarre delusion lasting more than a month, with function preserved and no other psychotic symptoms. <em>Answer:</em> delusional disorder (erotomanic type).</p>
+<p><strong>3. What's the next step?</strong> A 29-year-old with treatment-resistant schizophrenia is starting clozapine. <em>Reasoning:</em> clozapine's most dangerous early risk is agranulocytosis. <em>Answer:</em> monitor the absolute neutrophil count on a fixed schedule before and during treatment.</p>
+<p><strong>4. What's the mechanism?</strong> A 41-year-old has drooping eyelids and double vision that worsen through the day and improve after rest. Reflexes and sensation are normal. <em>Reasoning:</em> fatigable weakness of eye and bulbar muscles with normal reflexes points to the neuromuscular junction. <em>Answer:</em> antibodies against postsynaptic acetylcholine receptors.</p>
+<p><strong>5. Given this, what else is true?</strong> A knife wound severs the left half of the spinal cord at T10. <em>Reasoning:</em> the dorsal columns and corticospinal tract are uncrossed at this level; spinothalamic fibers have already crossed. <em>Answer:</em> left leg weakness and loss of vibration and position below T10, with loss of pain and temperature on the right starting a level or two below.</p>
+<h2 id="integrated-study-approach">Integrated study approach</h2>
+<p>The final rewards connecting systems rather than memorizing them separately. A few connections run through the whole block:</p>
+<ul>
+<li><strong>Psychiatry meets neurology.</strong> Psychiatric symptoms are often the first sign of a neurological disease (movement disorders, frontotemporal dementia, copper or vitamin disorders, encephalitis). Psychiatric drugs cause neurological emergencies (rigidity and fever, extrapyramidal signs, seizures).</li>
+<li><strong>Pharmacology follows anatomy.</strong> Dopamine pathways explain both Parkinson treatment and antipsychotic side effects. GABA and glutamate explain sedatives, withdrawal and several antiseizure and ALS drugs.</li>
+<li><strong>Development and teratogens connect to epilepsy and mood care.</strong> Several antiseizure mood stabilizers carry neural tube risk, so folate and drug choice matter in people who could become pregnant.</li>
+<li><strong>Autonomic pathways appear across groups:</strong> Horner syndrome, orthostatic hypotension from central or spinal sympathetic loss, autonomic dysreflexia and the autonomic signs of some headaches.</li>
+</ul>
+<h3 id="high-yield-patterns-for-exam-day">High-yield patterns for exam day</h3>
+<ol type="1">
+<li>A cranial nerve sign on one side and body signs on the other side means the brainstem; the cranial nerve tells you the level.</li>
+<li>Bilateral, segmental pain and temperature loss with vibration spared means the crossing fibers in the center of the cord.</li>
+<li>Loss of reflexes points to the peripheral nervous system (root, nerve, anterior horn); brisk reflexes point to the CNS.</li>
+<li>Psychosis that persists after mood normalizes, or that appears without mood episodes, is not a pure mood disorder.</li>
+<li>Hypomania never includes psychosis or loss of function; if either is present, it is mania.</li>
+<li>In management questions, stabilize first (weight, safety, reversal of anticoagulation), then treat.</li>
+<li>In drug questions, look for the comorbidity or pregnancy that rules options out, and match the side effect to the drug class.</li>
+<li>In image questions, decide first: inside or outside the brain, bleed or mass, acute or old, which territory.</li>
+</ol>
+<h2 id="layered-probing-questions">Layered probing questions</h2>
+<p>Work through each case step by step. Answers are indented under each step. All are new patients, not exam items.</p>
+<p><strong>1. Psychiatric diagnosis.</strong> A 21-year-old has had auditory hallucinations, disorganized speech and social withdrawal for three months, with no mood episodes and a negative drug screen.</p>
+<ol type="1">
+<li>What is the most likely diagnosis?
+<ul>
+<li>Schizophreniform disorder (psychotic symptoms for 1 to less than 6 months).</li>
+</ul></li>
+<li>What would change the diagnosis to schizophrenia?
+<ul>
+<li>Symptoms (including prodromal or residual phases) lasting at least 6 months with functional decline.</li>
+</ul></li>
+<li>Which dopamine pathway is linked to the hallucinations, and which to negative symptoms?
+<ul>
+<li>Mesolimbic excess for positive symptoms; reduced mesocortical activity for negative symptoms.</li>
+</ul></li>
+<li>She starts haloperidol and develops sustained neck twisting within two days. What is it and how is it treated?
+<ul>
+<li>Acute dystonia; give an anticholinergic (benztropine) or diphenhydramine.</li>
+</ul></li>
+</ol>
+<p><strong>2. Psychiatric management.</strong> A 45-year-old with bipolar I disorder stable on lithium is started on hydrochlorothiazide and ibuprofen. A week later she has coarse tremor, vomiting and confusion.</p>
+<ol type="1">
+<li>What is the likely problem?
+<ul>
+<li>Lithium toxicity.</li>
+</ul></li>
+<li>Why did these drugs cause it?
+<ul>
+<li>Both reduce renal lithium clearance (thiazides by increasing proximal reabsorption with sodium; NSAIDs by reducing renal blood flow).</li>
+</ul></li>
+<li>What test confirms it?
+<ul>
+<li>A serum lithium level, plus kidney function and electrolytes.</li>
+</ul></li>
+<li>What long-term monitoring does lithium need?
+<ul>
+<li>Levels, kidney function, TSH and calcium.</li>
+</ul></li>
+</ol>
+<p><strong>3. Spinal cord.</strong> A 70-year-old wakes after aortic surgery with paralysis of both legs and loss of pain and temperature below T8. Vibration and position are normal.</p>
+<ol type="1">
+<li>Which part of the cord is damaged?
+<ul>
+<li>The anterior two-thirds.</li>
+</ul></li>
+<li>Which vessel?
+<ul>
+<li>The anterior spinal artery (often after loss of flow through the artery of Adamkiewicz).</li>
+</ul></li>
+<li>Why are vibration and position spared?
+<ul>
+<li>The dorsal columns are supplied by the posterior spinal arteries.</li>
+</ul></li>
+<li>Will his legs be flaccid or spastic in a month?
+<ul>
+<li>Spastic with brisk reflexes and Babinski signs, after an early period of spinal shock.</li>
+</ul></li>
+</ol>
+<p><strong>4. Brainstem.</strong> A 60-year-old has the right side of her tongue wasting and deviating to the right, with left arm and leg weakness and loss of vibration on the left.</p>
+<ol type="1">
+<li>Where is the lesion?
+<ul>
+<li>Right medial medulla.</li>
+</ul></li>
+<li>Which structures explain each sign?
+<ul>
+<li>CN XII nucleus or fibers (tongue), pyramid (contralateral weakness), medial lemniscus (contralateral vibration loss).</li>
+</ul></li>
+<li>Which artery is most likely involved?
+<ul>
+<li>Branches of the anterior spinal or vertebral artery.</li>
+</ul></li>
+<li>Why is facial sensation normal?
+<ul>
+<li>The spinal trigeminal tract and nucleus lie laterally and are spared.</li>
+</ul></li>
+</ol>
+<p><strong>5. Stroke.</strong> A 72-year-old has sudden weakness and numbness of the right leg, with the arm and face much less affected, and seems apathetic.</p>
+<ol type="1">
+<li>Which vessel is occluded?
+<ul>
+<li>Left anterior cerebral artery.</li>
+</ul></li>
+<li>Why is the leg worse than the arm?
+<ul>
+<li>The leg area of motor and sensory cortex lies on the medial surface of the hemisphere.</li>
+</ul></li>
+<li>What other sign might appear?
+<ul>
+<li>Urinary incontinence; abulia from medial frontal damage.</li>
+</ul></li>
+<li>Her ECG shows atrial fibrillation. What prevents another stroke?
+<ul>
+<li>Anticoagulation.</li>
+</ul></li>
+</ol>
+<p><strong>6. Cortex and language.</strong> A 68-year-old speaks fluently but with made-up words, cannot follow commands and does not seem aware of the problem.</p>
+<ol type="1">
+<li>What type of aphasia is this?
+<ul>
+<li>Wernicke (receptive) aphasia.</li>
+</ul></li>
+<li>Where is the lesion?
+<ul>
+<li>Left posterior superior temporal gyrus.</li>
+</ul></li>
+<li>Which vessel?
+<ul>
+<li>Inferior division of the left MCA.</li>
+</ul></li>
+<li>What visual field defect might go with it?
+<ul>
+<li>Right upper quadrantanopia (Meyer loop in the temporal lobe).</li>
+</ul></li>
+</ol>
+<p><strong>7. Movement.</strong> A 74-year-old with diabetes and hypertension suddenly develops wild flinging movements of the left arm.</p>
+<ol type="1">
+<li>What is the movement called?
+<ul>
+<li>Hemiballismus.</li>
+</ul></li>
+<li>Where is the lesion?
+<ul>
+<li>Right subthalamic nucleus.</li>
+</ul></li>
+<li>Why does that lesion cause excess movement?
+<ul>
+<li>The subthalamic nucleus drives the internal globus pallidus, which inhibits the thalamus; losing it releases thalamocortical activity.</li>
+</ul></li>
+<li>What is the likely cause?
+<ul>
+<li>A small-vessel (lacunar) stroke.</li>
+</ul></li>
+</ol>
+<p><strong>8. Headache.</strong> A 26-year-old woman with obesity has daily headaches worse lying down, brief episodes of blurred vision and horizontal double vision. MRI is normal.</p>
+<ol type="1">
+<li>What is the most likely diagnosis?
+<ul>
+<li>Idiopathic intracranial hypertension.</li>
+</ul></li>
+<li>What will fundoscopy show?
+<ul>
+<li>Bilateral papilledema.</li>
+</ul></li>
+<li>Why the double vision?
+<ul>
+<li>Raised pressure stretches CN VI (a false localizing sign).</li>
+</ul></li>
+<li>What confirms it, and what treats it?
+<ul>
+<li>Lumbar puncture with high opening pressure and normal CSF; weight loss and acetazolamide.</li>
+</ul></li>
+</ol>
+<p><strong>9. Ventricles.</strong> A 78-year-old has a shuffling, magnetic gait, urinary incontinence and slowed thinking over a year.</p>
+<ol type="1">
+<li>What is the likely diagnosis?
+<ul>
+<li>Normal pressure hydrocephalus.</li>
+</ul></li>
+<li>What will imaging show?
+<ul>
+<li>Enlarged ventricles out of proportion to atrophy.</li>
+</ul></li>
+<li>Is it communicating or obstructive?
+<ul>
+<li>Communicating (impaired CSF absorption).</li>
+</ul></li>
+<li>What test predicts benefit from a shunt?
+<ul>
+<li>Large-volume lumbar tap with gait assessment before and after.</li>
+</ul></li>
+</ol>
+<p><strong>10. Neuropathology.</strong> A 64-year-old has three months of headache and personality change. MRI shows a ring-enhancing mass crossing the corpus callosum.</p>
+<ol type="1">
+<li>What is the likely tumor?
+<ul>
+<li>Glioblastoma.</li>
+</ul></li>
+<li>What will histology show?
+<ul>
+<li>Pseudopalisading necrosis and vascular proliferation.</li>
+</ul></li>
+<li>Which cell marker supports a glial origin?
+<ul>
+<li>GFAP.</li>
+</ul></li>
+<li>Why does the mass enhance?
+<ul>
+<li>Disruption of the blood-brain barrier lets gadolinium leak into the tumor.</li>
+</ul></li>
+</ol>
+<p><strong>11. Neuropharmacology.</strong> A 30-year-old with focal epilepsy starts phenytoin. Months later he has swollen gums and unsteady gait, and his level jumped sharply after a small dose increase.</p>
+<ol type="1">
+<li>What explains the gums?
+<ul>
+<li>Gingival hyperplasia, a known phenytoin effect.</li>
+</ul></li>
+<li>What explains the gait?
+<ul>
+<li>Cerebellar toxicity (nystagmus and ataxia at high levels).</li>
+</ul></li>
+<li>Why did a small dose change raise the level so much?
+<ul>
+<li>Zero-order kinetics: its metabolism saturates.</li>
+</ul></li>
+<li>What is phenytoin's mechanism?
+<ul>
+<li>Blocks voltage-gated sodium channels, prolonging their inactive state.</li>
+</ul></li>
+</ol>
+
+    </article>
+  </div>
+</div>
+<a class="btn top" href="#app">↑ Top</a>
+</div>
+<script>
+(function () {
+  const gate = document.getElementById("gate"), app = document.getElementById("app");
+  const ok = () => { gate.hidden = true; app.hidden = false; try { localStorage.setItem("mbbqb-auth", String(Date.now())); } catch (e) {} };
+  try { const t = +localStorage.getItem("mbbqb-auth"); if (t && Date.now() - t < 12 * 3600 * 1000) { ok(); return; } } catch (e) {}
+  const u = document.getElementById("gUser"), p = document.getElementById("gPass"), err = document.getElementById("gErr");
+  const tryLogin = () => {
+    if (u.value.trim().toUpperCase() === "MBB" && p.value === "Isawesome") ok();
+    else { err.hidden = false; p.value = ""; p.focus(); }
+  };
+  document.getElementById("gBtn").addEventListener("click", tryLogin);
+  [u, p].forEach(el => el.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); tryLogin(); } }));
+  u.focus();
+})();
+</script>
+</body>
+</html>

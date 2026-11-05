@@ -163,7 +163,7 @@ img{max-width:100%}
       <h1>MBB Final Question Bank</h1>
       <p class="sub">Exam-style practice questions for both halves of the final: psychiatry and cumulative. Pick an answer to see why each option is right or wrong. Click "Cross out" to eliminate options as you reason.</p>
     </div>
-    <a class="btn primary" id="guideBtn" href="https://claude.ai/artifact/3vWYrU3wN8viUBSEeoafZn" target="_blank" rel="noopener">Open the study guide ↗</a>
+    <a class="btn primary" id="guideBtn" href="study-guide.html" target="_blank">Open the study guide ↗</a>
   </header>
 
   <section class="filters" aria-label="Filters">
@@ -205,7 +205,7 @@ img{max-width:100%}
 </div>
 </div>
 <script>
-const GUIDE = "https://claude.ai/artifact/3vWYrU3wN8viUBSEeoafZn";
+const GUIDE = "study-guide.html";
 const GROUPS = [
   null,
   "Psychiatric diagnosis",
@@ -2040,7 +2040,7 @@ function renderCard(list) {
       : '<div class="verdict no">Not quite. The answer is ' + LETTERS[it.ans] + ", " + esc(it.opts[it.ans][0]) + ". This question has been added to the end of the set so you can try it again.</div>";
     h += '<div class="key"><h3>Key point</h3><p>' + esc(q.key) + "</p></div>";
   }
-  h += '<div class="foot"><div class="navbtns"><a class="btn" href="' + GUIDE + '" target="_blank" rel="noopener">Review in study guide, section ' + q.g + " ↗</a>" +
+  h += '<div class="foot"><div class="navbtns"><a class="btn" href="' + GUIDE + '#s' + q.g + '" target="_blank">Study guide, section ' + q.g + " ↗</a>" +
        (done ? '<button class="btn" type="button" id="retryBtn">↺ Reset question</button>' : "") + "</div>" +
        '<div class="navbtns"><button class="btn" type="button" id="prevBtn"' + (cur === 0 ? " disabled" : "") + '>← Previous</button>' +
        '<button class="btn primary" type="button" id="nextBtn"' + (cur === list.length - 1 ? " disabled" : "") + '>Next →</button></div></div>';
@@ -2125,8 +2125,8 @@ renderAll();
 <script>
 (function () {
   const gate = document.getElementById("gate"), app = document.getElementById("app");
-  const ok = () => { gate.hidden = true; app.hidden = false; try { sessionStorage.setItem("mbbqb-auth", "1"); } catch (e) {} };
-  try { if (sessionStorage.getItem("mbbqb-auth") === "1") { ok(); return; } } catch (e) {}
+  const ok = () => { gate.hidden = true; app.hidden = false; try { localStorage.setItem("mbbqb-auth", String(Date.now())); } catch (e) {} };
+  try { const t = +localStorage.getItem("mbbqb-auth"); if (t && Date.now() - t < 12 * 3600 * 1000) { ok(); return; } } catch (e) {}
   const u = document.getElementById("gUser"), p = document.getElementById("gPass"), err = document.getElementById("gErr");
   const tryLogin = () => {
     if (u.value.trim().toUpperCase() === "MBB" && p.value === "Isawesome") ok();
